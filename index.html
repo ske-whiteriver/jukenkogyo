@@ -1,0 +1,1608 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>住研工業</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@500;600;700&display=swap">
+<style>
+  :root{
+    --teal-700:#005859;
+    --teal-800:#003f40;
+    --teal-100:#e3efee;
+    --teal-050:#f2f7f6;
+    --navy-700:#013580;
+    --navy-900:#051d47;
+    --ink:#231816;
+    --ink-soft:#5c534e;
+    --paper:#ffffff;
+    --paper-tint:#f5f2ec;
+    --line:#e3ddd0;
+    --line-strong:#cfc6b3;
+    --focus:#005859;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --teal-700:#3ea89f;
+      --teal-800:#2a7d76;
+      --teal-100:#123330;
+      --teal-050:#0f2624;
+      --navy-700:#6f8fe0;
+      --navy-900:#0a1830;
+      --ink:#eef0ee;
+      --ink-soft:#aeb6b0;
+      --paper:#0b100e;
+      --paper-tint:#121a17;
+      --line:#233330;
+      --line-strong:#2d423d;
+      --focus:#4fbdb3;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --teal-700:#3ea89f;
+    --teal-800:#2a7d76;
+    --teal-100:#123330;
+    --teal-050:#0f2624;
+    --navy-700:#6f8fe0;
+    --navy-900:#0a1830;
+    --ink:#eef0ee;
+    --ink-soft:#aeb6b0;
+    --paper:#0b100e;
+    --paper-tint:#121a17;
+    --line:#233330;
+    --line-strong:#2d423d;
+    --focus:#4fbdb3;
+    color-scheme: dark;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    font-size:16px;
+    line-height:1.8;
+    -webkit-font-smoothing:antialiased;
+    padding-left:max(16px, env(safe-area-inset-left,0px));
+    padding-right:max(16px, env(safe-area-inset-right,0px));
+  }
+  @media (prefers-reduced-motion: no-preference){
+    html{scroll-behavior:smooth;}
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit;}
+  h1,h2,h3{
+    font-family:"Zen Kaku Gothic New","Noto Sans JP",sans-serif;
+    text-wrap:balance;
+    margin:0;
+    color:var(--ink);
+  }
+  p{margin:0;}
+  .mono{
+    font-family:"JetBrains Mono","Noto Sans JP",monospace;
+    font-variant-numeric:tabular-nums;
+  }
+  .wrap{max-width:1120px; margin:0 auto;}
+  section{padding-block:clamp(56px,9vw,104px);}
+  .skip-link{
+    position:absolute; left:-9999px; top:auto;
+    background:var(--teal-700); color:#fff; padding:10px 16px; border-radius:8px; z-index:200;
+  }
+  .skip-link:focus{left:16px; top:calc(env(safe-area-inset-top,0px) + 8px);}
+  *:focus-visible{outline:2px solid var(--focus); outline-offset:3px; border-radius:2px;}
+
+  header.site{
+    position:sticky; top:env(safe-area-inset-top,0px); z-index:100;
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1120px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:16px; padding-block:10px;
+  }
+  .brand{display:flex; align-items:center; gap:10px; text-decoration:none; flex-shrink:0;}
+  .brand-plate{
+    display:flex; align-items:center;
+  }
+  .brand-plate img{height:30px; width:auto;}
+  .nav-toggle{display:none;}
+  .nav-burger{
+    display:none; cursor:pointer; padding:8px; border-radius:8px;
+    align-items:center; justify-content:center;
+  }
+  .nav-burger svg{width:24px; height:24px; stroke:var(--ink);}
+  .nav-links{
+    display:flex; align-items:center; gap:clamp(14px,2vw,28px);
+    list-style:none; margin:0; padding:0;
+  }
+  .nav-links a.navlink{
+    text-decoration:none; color:var(--ink-soft); font-weight:500; font-size:0.95rem;
+    padding-block:6px; border-bottom:2px solid transparent;
+    transition:color .15s ease, border-color .15s ease;
+    white-space:nowrap;
+  }
+  .nav-links a.navlink:hover{color:var(--teal-700); border-color:var(--teal-700);}
+  .nav-phone{
+    display:flex; align-items:center; gap:8px;
+    background:var(--teal-700); color:#fff; padding:9px 16px; border-radius:999px;
+    text-decoration:none; font-weight:700; white-space:nowrap; font-size:0.92rem;
+    transition:background .15s ease;
+  }
+  .nav-phone:hover{background:var(--teal-800);}
+  .nav-phone svg{width:16px; height:16px; stroke:#fff; fill:none; flex-shrink:0;}
+  .icon-link{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:38px; height:38px; border-radius:999px; border:1.5px solid var(--line-strong);
+    color:var(--ink-soft); text-decoration:none; flex-shrink:0;
+    transition:border-color .15s ease, color .15s ease;
+  }
+  .icon-link:hover{border-color:var(--teal-700); color:var(--teal-700);}
+  .icon-link svg{width:18px; height:18px; stroke:currentColor; fill:none;}
+  .icon-link.icon-insta{
+    border-color:transparent; color:#fff; border-radius:11px;
+    background:linear-gradient(135deg,var(--teal-700),var(--navy-700));
+  }
+  .icon-link.icon-insta:hover{border-color:transparent; color:#fff; opacity:.88;}
+  .icon-link.icon-insta svg{width:23px; height:23px;}
+
+  @media (max-width: 860px){
+    .nav-burger{display:inline-flex;}
+    .nav-links{
+      display:none; position:absolute; left:0; right:0; top:100%;
+      background:var(--paper); border-bottom:1px solid var(--line);
+      flex-direction:column; align-items:stretch; gap:0; padding:8px 16px 16px;
+    }
+    .nav-toggle:checked ~ .nav-links{display:flex;}
+    .nav-links a.navlink{padding-block:12px; border-bottom:1px solid var(--line);}
+    .nav-links .nav-phone{margin-top:12px; justify-content:center;}
+  }
+
+  .hero{
+    position:relative; overflow:hidden;
+    padding-block:clamp(64px,11vw,120px) clamp(48px,8vw,88px);
+    background:var(--paper);
+  }
+  .hero-blob{
+    position:absolute; z-index:0; filter:blur(2px); opacity:.85; pointer-events:none;
+  }
+  .blob-a{
+    top:-18%; right:-14%; width:min(60vw,640px); aspect-ratio:1/1;
+    background:linear-gradient(135deg,var(--teal-700),var(--navy-700));
+    clip-path:polygon(30% 0%,100% 8%,84% 78%,52% 100%,0% 62%,10% 22%);
+    opacity:.14;
+  }
+  .blob-b{
+    bottom:-22%; right:6%; width:min(30vw,320px); aspect-ratio:1/1;
+    background:var(--navy-700); opacity:.10;
+    clip-path:polygon(20% 0%,100% 14%,80% 100%,0% 86%);
+  }
+  .hero-inner{position:relative; z-index:1; display:grid; gap:28px; max-width:760px;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:"JetBrains Mono",monospace; font-weight:500; font-size:.8rem;
+    letter-spacing:.14em; color:var(--teal-700);
+  }
+  .eyebrow img{height:22px; width:auto;}
+  .hero h1{
+    font-size:clamp(2.1rem,4.6vw,3.4rem); font-weight:900; line-height:1.35; letter-spacing:.01em;
+  }
+  .hero h1 em{
+    font-style:normal;
+    background:linear-gradient(100deg,var(--teal-700),var(--navy-700));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero-lead{font-size:1.05rem; color:var(--ink-soft); max-width:56ch;}
+  .hero-actions{display:flex; flex-wrap:wrap; gap:14px; margin-top:6px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:14px 26px; border-radius:999px; font-weight:700; font-size:.98rem;
+    text-decoration:none; border:1.5px solid transparent; cursor:pointer;
+    transition:transform .15s ease, background .15s ease, border-color .15s ease, color .15s ease;
+    font-family:inherit;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn svg{width:18px; height:18px; flex-shrink:0;}
+  .btn-primary{background:var(--teal-700); color:#fff;}
+  .btn-primary:hover{background:var(--teal-800);}
+  .btn-outline{background:transparent; color:var(--ink); border-color:var(--line-strong);}
+  .btn-outline:hover{border-color:var(--teal-700); color:var(--teal-700);}
+  .hero-strip{
+    position:relative; z-index:1; margin-top:clamp(40px,6vw,64px);
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line); border-radius:16px; overflow:hidden;
+  }
+  .hero-strip-item{background:var(--paper); padding:22px 20px;}
+  .hero-strip-item h3{font-size:1.02rem; font-weight:700; margin-bottom:6px;}
+  .hero-strip-item p{font-size:.88rem; color:var(--ink-soft);}
+  @media (max-width:720px){ .hero-strip{grid-template-columns:1fr;} }
+
+  .section-head{max-width:640px; margin-bottom:clamp(32px,5vw,48px);}
+  .section-eyebrow{
+    display:flex; align-items:center; gap:8px;
+    font-family:"JetBrains Mono",monospace; font-size:.78rem; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--teal-700); font-weight:600; margin-bottom:12px;
+  }
+  .section-eyebrow::before{content:""; width:22px; height:2px; background:var(--teal-700); display:inline-block;}
+  .section-head h2{font-size:clamp(1.6rem,3.2vw,2.2rem); font-weight:900;}
+  .section-head p{margin-top:14px; color:var(--ink-soft);}
+  .tint{background:var(--paper-tint);}
+
+  .service-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  @media (max-width:900px){ .service-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:600px){ .service-grid{grid-template-columns:1fr;} }
+  .service-card{
+    background:var(--paper); border:1px solid var(--line); border-radius:16px; padding:26px 22px;
+    display:flex; flex-direction:column; gap:14px; transition:border-color .15s ease, transform .15s ease;
+  }
+  .service-card:hover{border-color:var(--line-strong); transform:translateY(-2px);}
+  .service-icon{
+    width:48px; height:48px; border-radius:12px; display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .service-icon svg{width:24px; height:24px; fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round;}
+  .service-icon.teal{background:var(--teal-100); }
+  .service-icon.teal svg{stroke:var(--teal-700);}
+  .service-icon.navy{background:color-mix(in srgb, var(--navy-700) 14%, transparent);}
+  .service-icon.navy svg{stroke:var(--navy-700);}
+  .service-card h3{font-size:1.04rem; font-weight:700;}
+  .service-card p{font-size:.9rem; color:var(--ink-soft);}
+  .note-inline{
+    margin-top:28px; font-size:.86rem; color:var(--ink-soft);
+    border-left:3px solid var(--line-strong); padding-left:14px;
+  }
+
+  .project-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  @media (max-width:900px){ .project-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:600px){ .project-grid{grid-template-columns:1fr;} }
+  .project-card{
+    background:var(--paper); border:1px solid var(--line); border-radius:16px; overflow:hidden;
+    display:flex; flex-direction:column; transition:border-color .15s ease, transform .15s ease;
+  }
+  .project-card:hover{border-color:var(--line-strong); transform:translateY(-2px);}
+  .project-photo{width:100%; aspect-ratio:4/3; object-fit:cover; display:block; background:var(--paper-tint);}
+  .project-photo-empty{background:linear-gradient(135deg, var(--paper-tint), var(--line));}
+  .project-body{padding:16px 18px 20px;}
+  .project-tag{
+    display:inline-block; background:var(--teal-100); color:var(--teal-800);
+    font-size:.8rem; font-weight:700; padding:5px 13px; border-radius:999px;
+  }
+  .project-text{margin-top:10px; font-size:.92rem; line-height:1.65; color:var(--ink-soft);}
+
+  .about-layout{display:grid; grid-template-columns:1.1fr 1fr; gap:48px; align-items:start;}
+  @media (max-width:860px){ .about-layout{grid-template-columns:1fr;} }
+  .info-table{width:100%; border-collapse:collapse;}
+  .info-table tr{border-bottom:1px solid var(--line);}
+  .info-table tr:first-child{border-top:1px solid var(--line);}
+  .info-table th{
+    text-align:left; padding:16px 16px 16px 0; width:9.5em; font-weight:700;
+    font-size:.88rem; color:var(--navy-700); vertical-align:top;
+    font-family:"JetBrains Mono",monospace; letter-spacing:.03em;
+  }
+  .info-table td{padding:16px 0; vertical-align:top;}
+  .about-visual{
+    border-radius:18px; overflow:hidden; border:1px solid var(--line);
+    background:linear-gradient(155deg,var(--navy-900),var(--teal-800));
+    aspect-ratio:4/3; display:flex; align-items:center; justify-content:center; padding:36px;
+  }
+  .about-visual .plate{
+    background:#fff; border-radius:16px; padding:26px 30px; box-shadow:0 18px 40px -18px rgba(0,0,0,.5);
+  }
+  .about-visual .plate img{height:70px; width:auto;}
+
+  .history-note{
+    margin-top:28px; border:1.5px dashed var(--line-strong); border-radius:14px;
+    padding:20px 22px; display:flex; gap:14px; align-items:flex-start;
+    color:var(--ink-soft); font-size:.9rem; background:var(--paper);
+  }
+  .history-note svg{width:20px; height:20px; stroke:var(--teal-700); fill:none; stroke-width:1.6; flex-shrink:0; margin-top:2px;}
+
+  .careers-panel{
+    background:var(--paper); border:1px solid var(--line); border-radius:20px;
+    padding:clamp(28px,4vw,44px); display:grid; grid-template-columns:1.1fr 1fr; gap:40px;
+  }
+  @media (max-width:860px){ .careers-panel{grid-template-columns:1fr;} }
+  .careers-panel h3{font-size:1.3rem; font-weight:800; margin-bottom:14px;}
+  .careers-panel p{color:var(--ink-soft); margin-bottom:20px;}
+  .tag-row{display:flex; flex-wrap:wrap; gap:8px;}
+  .tag{
+    background:var(--teal-100); color:var(--teal-800); font-size:.82rem; font-weight:600;
+    padding:6px 13px; border-radius:999px;
+  }
+  .careers-table{width:100%; border-collapse:collapse;}
+  .careers-table tr{border-bottom:1px solid var(--line);}
+  .careers-table tr:first-child{border-top:1px solid var(--line);}
+  .careers-table th{
+    text-align:left; padding:14px 14px 14px 0; width:7em; font-size:.85rem;
+    color:var(--navy-700); font-family:"JetBrains Mono",monospace; vertical-align:top;
+  }
+  .careers-table td{padding:14px 0; font-size:.94rem;}
+
+  .contact-grid{display:grid; grid-template-columns:.9fr 1.1fr; gap:44px; align-items:start;}
+  @media (max-width:900px){ .contact-grid{grid-template-columns:1fr;} }
+  .contact-card{
+    background:var(--navy-900); color:#fff; border-radius:20px; padding:clamp(28px,4vw,40px);
+    display:flex; flex-direction:column; gap:22px;
+  }
+  .contact-row{display:flex; gap:14px; align-items:flex-start;}
+  .contact-row svg{width:20px; height:20px; stroke:#bcd6d2; fill:none; stroke-width:1.6; margin-top:3px; flex-shrink:0;}
+  .contact-row .label{font-size:.78rem; text-transform:uppercase; letter-spacing:.1em; color:#9fc2bd; font-family:"JetBrains Mono",monospace; margin-bottom:4px;}
+  .contact-row .value{font-size:1.15rem; font-weight:700;}
+  .contact-row .value.small{font-size:.98rem; font-weight:500;}
+  .copy-btn{
+    display:inline-flex; align-items:center; gap:6px; margin-top:8px;
+    background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2); color:#fff;
+    padding:6px 12px; border-radius:999px; font-size:.78rem; cursor:pointer; font-family:inherit;
+  }
+  .copy-btn:hover{background:rgba(255,255,255,.18);}
+  .copy-btn svg{width:13px; height:13px; stroke:#fff; fill:none; stroke-width:1.8;}
+  .map-link{
+    display:inline-flex; align-items:center; gap:8px; margin-top:6px; color:#cfe7e4;
+    text-decoration:underline; font-size:.9rem;
+  }
+  .map-link-light{
+    display:inline-flex; align-items:center; gap:6px; margin-top:8px; color:var(--teal-700);
+    text-decoration:underline; font-size:.86rem; font-weight:600;
+  }
+  .contact-hr{height:1px; background:rgba(255,255,255,.14); border:none;}
+
+  .form-card{
+    background:var(--paper); border:1px solid var(--line); border-radius:20px;
+    padding:clamp(26px,4vw,38px);
+  }
+  .field{display:flex; flex-direction:column; gap:6px; margin-bottom:18px;}
+  .field label{font-size:.86rem; font-weight:700;}
+  .field .req{color:var(--teal-700); font-weight:700; margin-left:2px;}
+  .field input, .field textarea, .field select{
+    font:inherit; padding:12px 14px; border-radius:10px; border:1.5px solid var(--line-strong);
+    background:var(--paper); color:var(--ink); resize:vertical;
+  }
+  .field input:focus, .field textarea:focus, .field select:focus{border-color:var(--teal-700);}
+  .field-row{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  @media (max-width:520px){ .field-row{grid-template-columns:1fr;} }
+  .form-note{font-size:.82rem; color:var(--ink-soft); margin-top:2px; margin-bottom:20px;}
+  .result-panel{
+    margin-top:20px; padding:18px 20px; border-radius:14px; background:var(--teal-050);
+    border:1px solid var(--teal-100); display:none; flex-direction:column; gap:12px;
+  }
+  .result-panel.show{display:flex;}
+  .result-panel p{font-size:.9rem; color:var(--ink-soft);}
+  .result-actions{display:flex; flex-wrap:wrap; gap:10px;}
+  textarea.compose{
+    width:100%; min-height:120px; font-family:"JetBrains Mono",monospace; font-size:.82rem;
+    padding:12px; border-radius:10px; border:1px solid var(--line-strong); background:var(--paper); color:var(--ink);
+  }
+
+  footer.site{
+    background:linear-gradient(155deg,var(--navy-900),var(--teal-800));
+    color:#eef4f3; padding-block:56px calc(28px + env(safe-area-inset-bottom,0px));
+  }
+  .footer-inner{display:flex; flex-wrap:wrap; gap:80px; justify-content:flex-start; align-items:flex-start;}
+  .footer-plate{background:#fff; border-radius:12px; padding:14px 18px; display:inline-flex;}
+  .footer-plate img{height:34px; width:auto;}
+  .footer-info{display:flex; flex-direction:column; gap:6px; font-size:.92rem; color:#d7e6e3;}
+  .footer-info strong{color:#fff; font-size:1rem;}
+  .footer-links{display:grid; grid-template-columns:repeat(2,auto); column-gap:44px; row-gap:12px; align-content:start; margin-top:14px;}
+  .footer-links a{text-decoration:none; color:#d7e6e3; font-size:.92rem;}
+  .footer-links a:hover{color:#fff;}
+  @media (max-width:480px){ .footer-links{grid-template-columns:1fr;} }
+  .footer-bottom{
+    margin-top:40px; padding-top:20px; border-top:1px solid rgba(255,255,255,.15);
+    font-size:.8rem; color:#a9c4c0; display:flex; flex-wrap:wrap; gap:10px; justify-content:center;
+  }
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">本文へスキップ</a>
+
+<header class="site" id="top">
+  <div class="nav-inner">
+    <a href="#top" class="brand" aria-label="株式会社住研工業 ホーム">
+      <span class="brand-plate"><img src="assets/logo-header.png" alt="株式会社住研工業"></span>
+    </a>
+    <input type="checkbox" id="navToggle" class="nav-toggle">
+    <label for="navToggle" class="nav-burger" aria-label="メニューを開く">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </label>
+    <nav class="nav-links" id="navLinks">
+      <a class="navlink" href="#about">会社概要</a>
+      <a class="navlink" href="#services">事業内容</a>
+      <a class="navlink" href="#projects">施工事例</a>
+      <a class="navlink" href="#careers">採用情報</a>
+      <a class="navlink" href="#contact">お問い合わせ</a>
+<a class="icon-link icon-insta" href="https://www.instagram.com/jukenkogyo/" target="_blank" rel="noopener" aria-label="Instagram（新しいタブで開く）"><svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg></a>
+      <a class="nav-phone" href="tel:09089857700">
+        <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C11 21 3 13 3 4.7c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.3 1.1L6.6 10.8z" stroke="none" fill="#fff"/></svg>
+        090-8985-7700
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="hero">
+    <div class="hero-blob blob-a"></div>
+    <div class="hero-blob blob-b"></div>
+    <div class="wrap">
+      <div class="hero-inner">
+        <span class="eyebrow"><img src="assets/logo-mark.png" alt="">Electricity</span>
+        <h1>明るい毎日を、<br><em>変わらない明日</em>へ。</h1>
+        <p class="hero-lead">株式会社住研工業は、岡山市を拠点とする電気工事会社です。<br>一般電気工事から受変電設備、太陽光発電設備まで、<br>地域のインフラを現場の技術で支えています。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">問い合わせする</a>
+          <a class="btn btn-outline" href="tel:09089857700">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C11 21 3 13 3 4.7c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.3 1.1L6.6 10.8z"/></svg>
+            090-8985-7700 に電話する
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-strip">
+        <div class="hero-strip-item">
+          <h3>確かな施工品質</h3>
+          <p>丁寧な施工と現場管理を徹底し、永く安心してお使いいただける設備をご提供します。</p>
+        </div>
+        <div class="hero-strip-item">
+          <h3>地域密着の対応力</h3>
+          <p>岡山市を拠点に、県内及び近隣エリアの現場へ迅速に対応します。</p>
+        </div>
+        <div class="hero-strip-item">
+          <h3>安全第一の現場づくり</h3>
+          <p>電気を扱う工事だからこそ、安全管理を最優先に進めています。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="about" class="tint">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-eyebrow">Company</span>
+        <h2>会社概要</h2>
+      </div>
+      <div class="about-layout">
+        <table class="info-table">
+<tr><th>会社名</th><td>株式会社住研工業</td></tr><tr><th>代表者</th><td>代表取締役　白川 雄盛</td></tr><tr><th>所在地</th><td class="mono">〒702-8051<br>岡山市南区築港元町1-20<br><a class="map-link-light" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE%E4%BD%8F%E7%A0%94%E5%B7%A5%E6%A5%AD%20%E3%80%92702-8051%20%E5%B2%A1%E5%B1%B1%E5%B8%82%E5%8D%97%E5%8C%BA%E7%AF%89%E6%B8%AF%E5%85%83%E7%94%BA1-20" target="_blank" rel="noopener">地図で見る（Googleマップ）↗</a></td></tr><tr><th>電話番号</th><td class="mono"><a href="tel:09089857700">090-8985-7700</a></td></tr><tr><th>事業内容</th><td>電気設備工事一式</td></tr>
+        </table>
+        <div class="about-visual">
+          <div class="plate"><img src="assets/logo-header.png" alt="株式会社住研工業"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-eyebrow">Services</span>
+        <h2>事業内容・サービス紹介</h2>
+        <p>公共施設から学校・住宅・店舗まで、電気設備に関わる工事を幅広く承っています。以下は代表的な工事内容です。</p>
+      </div>
+      <div class="service-grid"><div class="service-card"><span class="service-icon teal"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></span><h3>一般電気設備工事</h3><p>住宅・店舗・オフィスなどの新築・改築・改修に伴う電気設備工事に対応します。</p></div><div class="service-card"><span class="service-icon navy"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1.6"/><line x1="9" y1="7.5" x2="9" y2="11"/><line x1="15" y1="7.5" x2="15" y2="11"/><line x1="9" y1="14" x2="9" y2="17.5"/><line x1="15" y1="14" x2="15" y2="17.5"/></svg></span><h3>受変電設備工事</h3><p>キュービクルなど受変電設備の新設・更新工事、点検にも対応いたします。</p></div><div class="service-card"><span class="service-icon teal"><svg viewBox="0 0 24 24"><path d="M3 12c2.4 0 2.4-4 4.8-4s2.4 4 4.8 4 2.4-4 4.8-4 2.4 4 4.8 4"/><circle cx="3" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="21" cy="12" r="1" fill="currentColor" stroke="none"/></svg></span><h3>弱電工事</h3><p>屋内配線から屋外配線まで、用途や現場条件に応じた配線工事を行います。</p></div><div class="service-card"><span class="service-icon navy"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.6"/><line x1="12" y1="2.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21.5"/><line x1="2.5" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="21.5" y2="12"/><line x1="5.1" y1="5.1" x2="6.8" y2="6.8"/><line x1="17.2" y1="17.2" x2="18.9" y2="18.9"/><line x1="5.1" y1="18.9" x2="6.8" y2="17.2"/><line x1="17.2" y1="6.8" x2="18.9" y2="5.1"/></svg></span><h3>太陽光発電設備工事</h3><p>太陽光発電システムの設置工事に対応。導入のご相談もお気軽にどうぞ。</p></div><div class="service-card"><span class="service-icon teal"><svg viewBox="0 0 24 24"><path d="M9 18h6M9.5 21h5M12 3a5.5 5.5 0 0 0-3 10.1c.6.4 1 1.1 1 1.9h4c0-.8.4-1.5 1-1.9A5.5 5.5 0 0 0 12 3z"/></svg></span><h3>照明設備工事</h3><p>LED化や照明器具の新設・交換など、省エネにつながる照明工事を行います。</p></div><div class="service-card"><span class="service-icon navy"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12.3l2.6 2.6L16.2 9.2"/></svg></span><h3>保守点検・メンテナンス</h3><p>設置後の定期点検や不具合対応など、長く安心してお使いいただくための保守を行います。</p></div></div>
+      <p class="note-inline">上記は電気設備工事として一般的な業務例です。お困りごとがあれば一度ご相談ください。</p>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-eyebrow">Projects</span>
+        <h2>施工事例</h2>
+        <p>建物の種類や規模に応じて、これまで対応してきた工事内容の一例です。</p>
+      </div>
+<div class="project-grid"><div class="project-card"><img class="project-photo" src="assets/projects/project-08.jpg" alt="公共工事" loading="lazy"><div class="project-body"><span class="project-tag">公共工事</span><p class="project-text">犬養木堂記念館等 照明LED化工事</p></div></div><div class="project-card"><img class="project-photo" src="assets/projects/project-14.jpg" alt="公共工事" loading="lazy"><div class="project-body"><span class="project-tag">公共工事</span><p class="project-text">岡山市立芥子山小学校 体育館照明器具ほか改修工事</p></div></div><div class="project-card"><img class="project-photo" src="assets/projects/project-12.jpg" alt="公共工事" loading="lazy"><div class="project-body"><span class="project-tag">公共工事</span><p class="project-text">岡山市立富山公民館 照明設備ほか改修工事</p></div></div><div class="project-card"><img class="project-photo" src="assets/projects/project-09.jpg" alt="公共工事" loading="lazy"><div class="project-body"><span class="project-tag">公共工事</span><p class="project-text">角山小学校 特別教室空調設備更新に伴う電気設備工事</p></div></div><div class="project-card"><img class="project-photo" src="assets/projects/project-06.jpg" alt="公共工事" loading="lazy"><div class="project-body"><span class="project-tag">公共工事</span><p class="project-text">上道中学校 特別教室空調設備更新に伴う電気設備工事</p></div></div><div class="project-card"><img class="project-photo" src="assets/projects/project-13.jpg" alt="公共工事" loading="lazy"><div class="project-body"><span class="project-tag">公共工事</span><p class="project-text">岡山県立岡山瀬戸高等支援学校 空調設備整備に伴う電気設備工事</p></div></div><div class="project-card"><img class="project-photo" src="assets/projects/project-11.jpg" alt="公共工事" loading="lazy"><div class="project-body"><span class="project-tag">公共工事</span><p class="project-text">岡山市立古都小学校内 児童クラブ室増築に伴う電気設備工事</p></div></div><div class="project-card"><img class="project-photo" src="assets/projects/project-01.jpg" alt="公共工事" loading="lazy"><div class="project-body"><span class="project-tag">公共工事</span><p class="project-text">岡山市立旭東小学校内 児童クラブ室改築に伴う電気設備工事</p></div></div><div class="project-card"><img class="project-photo" src="assets/projects/project-02.jpg" alt="公共工事" loading="lazy"><div class="project-body"><span class="project-tag">公共工事</span><p class="project-text">岡山市立建部中学校 配膳室棟新築に伴う電気設備工事</p></div></div><div class="project-card"><img class="project-photo" src="assets/projects/project-07.jpg" alt="公共工事" loading="lazy"><div class="project-body"><span class="project-tag">公共工事</span><p class="project-text">岡山市立津島小学校 給水設備ほか改修に伴う電気設備工事</p></div></div><div class="project-card"><img class="project-photo" src="assets/projects/project-10.jpg" alt="公共工事" loading="lazy"><div class="project-body"><span class="project-tag">公共工事</span><p class="project-text">岡山大学（津島）農学部Ⅱ号館 エレベータ棟新営電気設備工事</p></div></div><div class="project-card"><img class="project-photo" src="assets/projects/project-03.jpg" alt="公共工事" loading="lazy"><div class="project-body"><span class="project-tag">公共工事</span><p class="project-text">岡山市福祉交流プラザ 山南エレベーター棟増築に伴う電気設備工事</p></div></div><div class="project-card"><img class="project-photo" src="assets/projects/project-05.jpg" alt="公共工事" loading="lazy"><div class="project-body"><span class="project-tag">公共工事</span><p class="project-text">岡山市立城東台小学校 太陽光発電設備改修工事</p></div></div><div class="project-card"><img class="project-photo" src="assets/projects/project-04.jpg" alt="公共工事" loading="lazy"><div class="project-body"><span class="project-tag">公共工事</span><p class="project-text">中央卸売市場 場内トイレ改修に伴う電気設備工事</p></div></div></div>
+    </div>
+  </section>
+
+  <section id="careers">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-eyebrow">Careers</span>
+        <h2>採用情報</h2>
+        <p>私たちと一緒に、地域の電気インフラを支えませんか。</p>
+      </div>
+      <div class="careers-panel">
+        <div>
+          <h3>募集職種</h3>
+          <div class="tag-row"><span class="tag">電気工事士（経験者歓迎）</span><span class="tag">未経験者</span></div>
+          <p style="margin-top:20px;">経験の浅い方も、先輩スタッフが現場で丁寧に指導します。まずはお気軽にお問い合わせください。</p>
+          <a class="btn btn-primary" href="#contact">お問い合わせへ進む</a>
+        </div>
+        <table class="careers-table"><tr><th>勤務地</th><td>岡山市南区築港元町1-20 ほか近隣現場</td></tr><tr><th>待遇</th><td>経験・能力に応じて優遇（詳細はお問い合わせ時にご相談ください）</td></tr><tr><th>応募方法</th><td>お電話またはお問い合わせフォームよりご連絡ください</td></tr></table>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="tint">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-eyebrow">Contact</span>
+        <h2>お問い合わせ</h2>
+        <p>工事のご相談、お見積り、採用に関するお問い合わせなど、お気軽にご連絡ください。</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-row">
+            <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C11 21 3 13 3 4.7c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.3 1.1L6.6 10.8z"/></svg>
+            <div style="flex:1;">
+              <div class="label">Tel</div>
+              <div class="value mono">090-8985-7700</div>
+              <button class="copy-btn" type="button" data-copy="090-8985-7700">
+                <svg viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="1.5"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+                番号をコピー
+              </button>
+            </div>
+          </div>
+          <hr class="contact-hr">
+          <div class="contact-row">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+            <div style="flex:1;">
+              <div class="label">Mail</div>
+              <div class="value small mono">ske.whiteriver@gmail.com</div>
+              <button class="copy-btn" type="button" data-copy="ske.whiteriver@gmail.com">
+                <svg viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="1.5"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+                アドレスをコピー
+              </button>
+            </div>
+          </div>
+          <hr class="contact-hr">
+          <div class="contact-row">
+            <svg viewBox="0 0 24 24"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.4"/></svg>
+            <div style="flex:1;">
+              <div class="label">Address</div>
+              <div class="value small">〒702-8051<br>岡山市南区築港元町1-20</div>
+              <a class="map-link" id="mapLink" href="#" target="_blank" rel="noopener">地図で見る（Googleマップ）↗</a>
+            </div>
+          </div>
+          <hr class="contact-hr">
+          <div class="contact-row">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M4.5 20c1.4-3.6 4.3-5.5 7.5-5.5s6.1 1.9 7.5 5.5"/></svg>
+            <div style="flex:1;">
+              <div class="label">Representative</div>
+              <div class="value small">代表取締役　白川 雄盛</div>
+            </div>
+          </div>
+<hr class="contact-hr"><div class="contact-row"><svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="#bcd6d2" stroke="none"/></svg><div style="flex:1;"><div class="label">Instagram</div><a class="map-link" href="https://www.instagram.com/jukenkogyo/" target="_blank" rel="noopener">@jukenkogyo ↗</a></div></div>
+        </div>
+
+        <div class="form-card">
+          <form id="contactForm" novalidate>
+            <div class="field-row">
+              <div class="field">
+                <label for="f-name">お名前<span class="req">*</span></label>
+                <input id="f-name" name="name" type="text" required autocomplete="name">
+              </div>
+              <div class="field">
+                <label for="f-company">会社名・屋号</label>
+                <input id="f-company" name="company" type="text" autocomplete="organization">
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="f-email">メールアドレス</label>
+                <input id="f-email" name="email" type="email" autocomplete="email">
+              </div>
+              <div class="field">
+                <label for="f-tel">電話番号</label>
+                <input id="f-tel" name="tel" type="tel" autocomplete="tel">
+              </div>
+            </div>
+            <div class="field">
+              <label for="f-message">問い合わせ内容<span class="req">*</span></label>
+              <textarea id="f-message" name="message" rows="5" required placeholder="工事のご相談内容、ご希望日、採用に関するご質問など"></textarea>
+            </div>
+            <p class="form-note">このサイトは静的ページのため、送信ボタンからメールアプリを開いて内容をお送りいただく形式です。メールアプリが開かない場合は、下の「内容をコピー」からご利用のメールソフトへ貼り付けてください。</p>
+            <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+              メールを送信する
+            </button>
+
+            <div class="result-panel" id="resultPanel">
+              <p>以下のボタンからメールアプリでお送りいただくか、内容をコピーしてお使いのメールソフト・SNSなどからご連絡ください。</p>
+              <textarea class="compose" id="composeText" readonly></textarea>
+              <div class="result-actions">
+                <a class="btn btn-primary" id="mailtoBtn" href="#" target="_top" rel="noopener">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+                  メールアプリで送信
+                </a>
+                <button type="button" class="btn btn-outline" id="copyComposeBtn">内容をコピー</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap footer-inner">
+    <div style="display:flex; flex-direction:column; gap:18px; max-width:320px;">
+      <span class="footer-plate"><img src="assets/logo-header.png" alt="株式会社住研工業"></span>
+      <div class="footer-info">
+        <strong>株式会社住研工業</strong>
+        <span>〒702-8051　岡山市南区築港元町1-20</span>
+        <span class="mono">TEL 090-8985-7700</span>
+        <span>代表取締役　白川 雄盛</span>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="#about">会社概要</a>
+      <a href="#services">事業内容</a>
+      <a href="#projects">施工事例</a>
+      <a href="#careers">採用情報</a>
+      <a href="#contact">お問い合わせ</a>
+<a href="https://www.instagram.com/jukenkogyo/" target="_blank" rel="noopener">Instagram ↗</a>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>&copy; <span id="year"></span> 株式会社住研工業</span>
+  </div>
+</footer>
+
+<script id="site-data" type="application/json">{"company":{"name":"株式会社住研工業","representative":"代表取締役　白川 雄盛","postal":"702-8051","address":"岡山市南区築港元町1-20","phone":"090-8985-7700","email":"ske.whiteriver@gmail.com","instagram":"https://www.instagram.com/jukenkogyo/","business":"電気設備工事一式"},"services":[{"icon":"bolt","title":"一般電気設備工事","desc":"住宅・店舗・オフィスなどの新築・改築・改修に伴う電気設備工事に対応します。"},{"icon":"panel","title":"受変電設備工事","desc":"キュービクルなど受変電設備の新設・更新工事、点検にも対応いたします。"},{"icon":"cable","title":"弱電工事","desc":"屋内配線から屋外配線まで、用途や現場条件に応じた配線工事を行います。"},{"icon":"sun","title":"太陽光発電設備工事","desc":"太陽光発電システムの設置工事に対応。導入のご相談もお気軽にどうぞ。"},{"icon":"bulb","title":"照明設備工事","desc":"LED化や照明器具の新設・交換など、省エネにつながる照明工事を行います。"},{"icon":"check","title":"保守点検・メンテナンス","desc":"設置後の定期点検や不具合対応など、長く安心してお使いいただくための保守を行います。"}],"projects":[{"tag":"公共工事","text":"犬養木堂記念館等 照明LED化工事","image":"assets/projects/project-08.jpg"},{"tag":"公共工事","text":"岡山市立芥子山小学校 体育館照明器具ほか改修工事","image":"assets/projects/project-14.jpg"},{"tag":"公共工事","text":"岡山市立富山公民館 照明設備ほか改修工事","image":"assets/projects/project-12.jpg"},{"tag":"公共工事","text":"角山小学校 特別教室空調設備更新に伴う電気設備工事","image":"assets/projects/project-09.jpg"},{"tag":"公共工事","text":"上道中学校 特別教室空調設備更新に伴う電気設備工事","image":"assets/projects/project-06.jpg"},{"tag":"公共工事","text":"岡山県立岡山瀬戸高等支援学校 空調設備整備に伴う電気設備工事","image":"assets/projects/project-13.jpg"},{"tag":"公共工事","text":"岡山市立古都小学校内 児童クラブ室増築に伴う電気設備工事","image":"assets/projects/project-11.jpg"},{"tag":"公共工事","text":"岡山市立旭東小学校内 児童クラブ室改築に伴う電気設備工事","image":"assets/projects/project-01.jpg"},{"tag":"公共工事","text":"岡山市立建部中学校 配膳室棟新築に伴う電気設備工事","image":"assets/projects/project-02.jpg"},{"tag":"公共工事","text":"岡山市立津島小学校 給水設備ほか改修に伴う電気設備工事","image":"assets/projects/project-07.jpg"},{"tag":"公共工事","text":"岡山大学（津島）農学部Ⅱ号館 エレベータ棟新営電気設備工事","image":"assets/projects/project-10.jpg"},{"tag":"公共工事","text":"岡山市福祉交流プラザ 山南エレベーター棟増築に伴う電気設備工事","image":"assets/projects/project-03.jpg"},{"tag":"公共工事","text":"岡山市立城東台小学校 太陽光発電設備改修工事","image":"assets/projects/project-05.jpg"},{"tag":"公共工事","text":"中央卸売市場 場内トイレ改修に伴う電気設備工事","image":"assets/projects/project-04.jpg"}],"careers":{"roles":["電気工事士（経験者歓迎）","未経験者"],"workplace":"岡山市南区築港元町1-20 ほか近隣現場","treatment":"経験・能力に応じて優遇（詳細はお問い合わせ時にご相談ください）","howToApply":"お電話またはお問い合わせフォームよりご連絡ください"}}</script>
+<script>/* 株式会社住研工業 サイトロジック（テンプレート生成 + 管理者編集パネル）
+ * このファイルの内容はページ末尾の <script> にそのまま埋め込まれる。
+ * 管理者が保存すると、この関数群を使って全文書を再生成し
+ * artifact.publish() で新しいバージョンとして公開する。
+ */
+
+/* ---- script tag breakage guards (this file must never contain the raw closing-script sequence) ---- */
+var SCRIPT_OPEN = "<scr" + "ipt";
+var SCRIPT_CLOSE = "</scr" + "ipt>";
+
+/* ---- icon presets ---- */
+var ICONS = {
+  bolt: '<path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/>',
+  panel: '<rect x="5" y="3" width="14" height="18" rx="1.6"/><line x1="9" y1="7.5" x2="9" y2="11"/><line x1="15" y1="7.5" x2="15" y2="11"/><line x1="9" y1="14" x2="9" y2="17.5"/><line x1="15" y1="14" x2="15" y2="17.5"/>',
+  cable: '<path d="M3 12c2.4 0 2.4-4 4.8-4s2.4 4 4.8 4 2.4-4 4.8-4 2.4 4 4.8 4"/><circle cx="3" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="21" cy="12" r="1" fill="currentColor" stroke="none"/>',
+  sun: '<circle cx="12" cy="12" r="3.6"/><line x1="12" y1="2.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21.5"/><line x1="2.5" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="21.5" y2="12"/><line x1="5.1" y1="5.1" x2="6.8" y2="6.8"/><line x1="17.2" y1="17.2" x2="18.9" y2="18.9"/><line x1="5.1" y1="18.9" x2="6.8" y2="17.2"/><line x1="17.2" y1="6.8" x2="18.9" y2="5.1"/>',
+  bulb: '<path d="M9 18h6M9.5 21h5M12 3a5.5 5.5 0 0 0-3 10.1c.6.4 1 1.1 1 1.9h4c0-.8.4-1.5 1-1.9A5.5 5.5 0 0 0 12 3z"/>',
+  check: '<circle cx="12" cy="12" r="9"/><path d="M8 12.3l2.6 2.6L16.2 9.2"/>'
+};
+var ICON_LABELS = {
+  bolt: "雷（一般工事向け）",
+  panel: "分電盤（受変電）",
+  cable: "配線（波線）",
+  sun: "太陽（太陽光）",
+  bulb: "電球（照明）",
+  check: "チェック（点検）"
+};
+var ICON_ORDER = ["bolt", "panel", "cable", "sun", "bulb", "check"];
+
+/* ---- small helpers ---- */
+function esc(s) {
+  return String(s == null ? "" : s)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+function telDigits(phone) {
+  return String(phone || "").replace(/[^0-9+]/g, "");
+}
+function instaHandle(url) {
+  if (!url) return "";
+  var m = String(url).match(/instagram\.com\/([^/?#]+)/i);
+  return m ? "@" + m[1] : url;
+}
+
+/* ---- section renderers (return HTML strings) ---- */
+function renderServices(list) {
+  return (list || []).map(function (item, i) {
+    var colorClass = i % 2 === 0 ? "teal" : "navy";
+    var iconKey = ICONS[item.icon] ? item.icon : "bolt";
+    return (
+      '<div class="service-card">' +
+        '<span class="service-icon ' + colorClass + '"><svg viewBox="0 0 24 24">' + ICONS[iconKey] + "</svg></span>" +
+        "<h3>" + esc(item.title) + "</h3>" +
+        "<p>" + esc(item.desc) + "</p>" +
+      "</div>"
+    );
+  }).join("");
+}
+
+function emptyNote(title, body) {
+  return (
+    '<div class="history-note">' +
+      '<svg viewBox="0 0 24 24"><path d="M4 20l1.2-4.2L16.8 4.2a1.7 1.7 0 0 1 2.4 0l.6.6a1.7 1.7 0 0 1 0 2.4L8.2 18.8 4 20z"/><line x1="14.5" y1="6.5" x2="17.5" y2="9.5"/></svg>' +
+      "<div><strong>" + esc(title) + "</strong><br>" + esc(body) + "</div>" +
+    "</div>"
+  );
+}
+
+function renderProjects(list) {
+  if (!list || !list.length) {
+    return emptyNote("施工事例は準備中です。", "掲載したい事例が決まりましたら管理者メニューから追加できます。");
+  }
+  return (
+    '<div class="project-grid">' +
+    list.map(function (item) {
+      var photo = item.image
+        ? '<img class="project-photo" src="' + esc(item.image) + '" alt="' + esc(item.tag || "施工事例") + '" loading="lazy">'
+        : '<div class="project-photo project-photo-empty"></div>';
+      return (
+        '<div class="project-card">' +
+          photo +
+          '<div class="project-body">' +
+            '<span class="project-tag">' + esc(item.tag) + "</span>" +
+            '<p class="project-text">' + esc(item.text) + "</p>" +
+          "</div>" +
+        "</div>"
+      );
+    }).join("") +
+    "</div>"
+  );
+}
+
+function renderCareerTags(roles) {
+  return (roles || []).map(function (r) {
+    return '<span class="tag">' + esc(r) + "</span>";
+  }).join("");
+}
+
+function renderCompanyRows(c) {
+  var mapQuery = c.name + " 〒" + c.postal + " " + c.address;
+  var mapUrl = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(mapQuery);
+  return (
+    "<tr><th>会社名</th><td>" + esc(c.name) + "</td></tr>" +
+    "<tr><th>代表者</th><td>" + esc(c.representative) + "</td></tr>" +
+    '<tr><th>所在地</th><td class="mono">〒' + esc(c.postal) + "<br>" + esc(c.address) + "<br>" +
+      '<a class="map-link-light" href="' + esc(mapUrl) + '" target="_blank" rel="noopener">地図で見る（Googleマップ）↗</a>' +
+    "</td></tr>" +
+    '<tr><th>電話番号</th><td class="mono"><a href="tel:' + esc(telDigits(c.phone)) + '">' + esc(c.phone) + "</a></td></tr>" +
+    "<tr><th>事業内容</th><td>" + esc(c.business) + "</td></tr>"
+  );
+}
+
+function renderCareerRows(careers) {
+  return (
+    "<tr><th>勤務地</th><td>" + esc(careers.workplace) + "</td></tr>" +
+    "<tr><th>待遇</th><td>" + esc(careers.treatment) + "</td></tr>" +
+    "<tr><th>応募方法</th><td>" + esc(careers.howToApply) + "</td></tr>"
+  );
+}
+
+function instaIconLink(url) {
+  if (!url) return "";
+  return (
+    '<a class="icon-link icon-insta" href="' + esc(url) + '" target="_blank" rel="noopener" aria-label="Instagram（新しいタブで開く）">' +
+      '<svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>' +
+    "</a>"
+  );
+}
+
+function instaContactRow(url) {
+  if (!url) return "";
+  return (
+    '<hr class="contact-hr">' +
+    '<div class="contact-row">' +
+      '<svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="#bcd6d2" stroke="none"/></svg>' +
+      '<div style="flex:1;">' +
+        '<div class="label">Instagram</div>' +
+        '<a class="map-link" href="' + esc(url) + '" target="_blank" rel="noopener">' + esc(instaHandle(url)) + " ↗</a>" +
+      "</div>" +
+    "</div>"
+  );
+}
+
+function footerInstaLink(url) {
+  if (!url) return "";
+  return '<a href="' + esc(url) + '" target="_blank" rel="noopener">Instagram ↗</a>';
+}
+
+/* ---- static head (title / fonts / css) ---- */
+var HEAD_EXTRA = "<title>住研工業</title>\n" +
+'<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@500;600;700&display=swap">\n' +
+"<style>\n" +
+"  :root{\n" +
+"    --teal-700:#005859;\n" +
+"    --teal-800:#003f40;\n" +
+"    --teal-100:#e3efee;\n" +
+"    --teal-050:#f2f7f6;\n" +
+"    --navy-700:#013580;\n" +
+"    --navy-900:#051d47;\n" +
+"    --ink:#231816;\n" +
+"    --ink-soft:#5c534e;\n" +
+"    --paper:#ffffff;\n" +
+"    --paper-tint:#f5f2ec;\n" +
+"    --line:#e3ddd0;\n" +
+"    --line-strong:#cfc6b3;\n" +
+"    --focus:#005859;\n" +
+"    color-scheme: light;\n" +
+"  }\n" +
+'  @media (prefers-color-scheme: dark){\n' +
+'    :root:not([data-theme="light"]){\n' +
+"      --teal-700:#3ea89f;\n" +
+"      --teal-800:#2a7d76;\n" +
+"      --teal-100:#123330;\n" +
+"      --teal-050:#0f2624;\n" +
+"      --navy-700:#6f8fe0;\n" +
+"      --navy-900:#0a1830;\n" +
+"      --ink:#eef0ee;\n" +
+"      --ink-soft:#aeb6b0;\n" +
+"      --paper:#0b100e;\n" +
+"      --paper-tint:#121a17;\n" +
+"      --line:#233330;\n" +
+"      --line-strong:#2d423d;\n" +
+"      --focus:#4fbdb3;\n" +
+"      color-scheme: dark;\n" +
+"    }\n" +
+"  }\n" +
+'  :root[data-theme="dark"]{\n' +
+"    --teal-700:#3ea89f;\n" +
+"    --teal-800:#2a7d76;\n" +
+"    --teal-100:#123330;\n" +
+"    --teal-050:#0f2624;\n" +
+"    --navy-700:#6f8fe0;\n" +
+"    --navy-900:#0a1830;\n" +
+"    --ink:#eef0ee;\n" +
+"    --ink-soft:#aeb6b0;\n" +
+"    --paper:#0b100e;\n" +
+"    --paper-tint:#121a17;\n" +
+"    --line:#233330;\n" +
+"    --line-strong:#2d423d;\n" +
+"    --focus:#4fbdb3;\n" +
+"    color-scheme: dark;\n" +
+"  }\n" +
+"\n" +
+"  *{box-sizing:border-box;}\n" +
+"  body{\n" +
+"    margin:0;\n" +
+"    background:var(--paper);\n" +
+"    color:var(--ink);\n" +
+'    font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;\n' +
+"    font-size:16px;\n" +
+"    line-height:1.8;\n" +
+"    -webkit-font-smoothing:antialiased;\n" +
+"    padding-left:max(16px, env(safe-area-inset-left,0px));\n" +
+"    padding-right:max(16px, env(safe-area-inset-right,0px));\n" +
+"  }\n" +
+"  @media (prefers-reduced-motion: no-preference){\n" +
+"    html{scroll-behavior:smooth;}\n" +
+"  }\n" +
+"  img{max-width:100%; display:block;}\n" +
+"  a{color:inherit;}\n" +
+"  h1,h2,h3{\n" +
+'    font-family:"Zen Kaku Gothic New","Noto Sans JP",sans-serif;\n' +
+"    text-wrap:balance;\n" +
+"    margin:0;\n" +
+"    color:var(--ink);\n" +
+"  }\n" +
+"  p{margin:0;}\n" +
+"  .mono{\n" +
+'    font-family:"JetBrains Mono","Noto Sans JP",monospace;\n' +
+"    font-variant-numeric:tabular-nums;\n" +
+"  }\n" +
+"  .wrap{max-width:1120px; margin:0 auto;}\n" +
+"  section{padding-block:clamp(56px,9vw,104px);}\n" +
+"  .skip-link{\n" +
+"    position:absolute; left:-9999px; top:auto;\n" +
+"    background:var(--teal-700); color:#fff; padding:10px 16px; border-radius:8px; z-index:200;\n" +
+"  }\n" +
+"  .skip-link:focus{left:16px; top:calc(env(safe-area-inset-top,0px) + 8px);}\n" +
+"  *:focus-visible{outline:2px solid var(--focus); outline-offset:3px; border-radius:2px;}\n" +
+"\n" +
+"  header.site{\n" +
+"    position:sticky; top:env(safe-area-inset-top,0px); z-index:100;\n" +
+"    background:var(--paper);\n" +
+"    border-bottom:1px solid var(--line);\n" +
+"  }\n" +
+"  .nav-inner{\n" +
+"    max-width:1120px; margin:0 auto;\n" +
+"    display:flex; align-items:center; justify-content:space-between;\n" +
+"    gap:16px; padding-block:10px;\n" +
+"  }\n" +
+"  .brand{display:flex; align-items:center; gap:10px; text-decoration:none; flex-shrink:0;}\n" +
+"  .brand-plate{\n" +
+"    display:flex; align-items:center;\n" +
+"  }\n" +
+"  .brand-plate img{height:30px; width:auto;}\n" +
+"  .nav-toggle{display:none;}\n" +
+"  .nav-burger{\n" +
+"    display:none; cursor:pointer; padding:8px; border-radius:8px;\n" +
+"    align-items:center; justify-content:center;\n" +
+"  }\n" +
+"  .nav-burger svg{width:24px; height:24px; stroke:var(--ink);}\n" +
+"  .nav-links{\n" +
+"    display:flex; align-items:center; gap:clamp(14px,2vw,28px);\n" +
+"    list-style:none; margin:0; padding:0;\n" +
+"  }\n" +
+"  .nav-links a.navlink{\n" +
+"    text-decoration:none; color:var(--ink-soft); font-weight:500; font-size:0.95rem;\n" +
+"    padding-block:6px; border-bottom:2px solid transparent;\n" +
+"    transition:color .15s ease, border-color .15s ease;\n" +
+"    white-space:nowrap;\n" +
+"  }\n" +
+"  .nav-links a.navlink:hover{color:var(--teal-700); border-color:var(--teal-700);}\n" +
+"  .nav-phone{\n" +
+"    display:flex; align-items:center; gap:8px;\n" +
+"    background:var(--teal-700); color:#fff; padding:9px 16px; border-radius:999px;\n" +
+"    text-decoration:none; font-weight:700; white-space:nowrap; font-size:0.92rem;\n" +
+"    transition:background .15s ease;\n" +
+"  }\n" +
+"  .nav-phone:hover{background:var(--teal-800);}\n" +
+"  .nav-phone svg{width:16px; height:16px; stroke:#fff; fill:none; flex-shrink:0;}\n" +
+"  .icon-link{\n" +
+"    display:inline-flex; align-items:center; justify-content:center;\n" +
+"    width:38px; height:38px; border-radius:999px; border:1.5px solid var(--line-strong);\n" +
+"    color:var(--ink-soft); text-decoration:none; flex-shrink:0;\n" +
+"    transition:border-color .15s ease, color .15s ease;\n" +
+"  }\n" +
+"  .icon-link:hover{border-color:var(--teal-700); color:var(--teal-700);}\n" +
+"  .icon-link svg{width:18px; height:18px; stroke:currentColor; fill:none;}\n" +
+"  .icon-link.icon-insta{\n" +
+"    border-color:transparent; color:#fff; border-radius:11px;\n" +
+"    background:linear-gradient(135deg,var(--teal-700),var(--navy-700));\n" +
+"  }\n" +
+"  .icon-link.icon-insta:hover{border-color:transparent; color:#fff; opacity:.88;}\n" +
+"  .icon-link.icon-insta svg{width:23px; height:23px;}\n" +
+"\n" +
+"  @media (max-width: 860px){\n" +
+"    .nav-burger{display:inline-flex;}\n" +
+"    .nav-links{\n" +
+"      display:none; position:absolute; left:0; right:0; top:100%;\n" +
+"      background:var(--paper); border-bottom:1px solid var(--line);\n" +
+"      flex-direction:column; align-items:stretch; gap:0; padding:8px 16px 16px;\n" +
+"    }\n" +
+"    .nav-toggle:checked ~ .nav-links{display:flex;}\n" +
+"    .nav-links a.navlink{padding-block:12px; border-bottom:1px solid var(--line);}\n" +
+"    .nav-links .nav-phone{margin-top:12px; justify-content:center;}\n" +
+"  }\n" +
+"\n" +
+"  .hero{\n" +
+"    position:relative; overflow:hidden;\n" +
+"    padding-block:clamp(64px,11vw,120px) clamp(48px,8vw,88px);\n" +
+"    background:var(--paper);\n" +
+"  }\n" +
+"  .hero-blob{\n" +
+"    position:absolute; z-index:0; filter:blur(2px); opacity:.85; pointer-events:none;\n" +
+"  }\n" +
+"  .blob-a{\n" +
+"    top:-18%; right:-14%; width:min(60vw,640px); aspect-ratio:1/1;\n" +
+"    background:linear-gradient(135deg,var(--teal-700),var(--navy-700));\n" +
+"    clip-path:polygon(30% 0%,100% 8%,84% 78%,52% 100%,0% 62%,10% 22%);\n" +
+"    opacity:.14;\n" +
+"  }\n" +
+"  .blob-b{\n" +
+"    bottom:-22%; right:6%; width:min(30vw,320px); aspect-ratio:1/1;\n" +
+"    background:var(--navy-700); opacity:.10;\n" +
+"    clip-path:polygon(20% 0%,100% 14%,80% 100%,0% 86%);\n" +
+"  }\n" +
+"  .hero-inner{position:relative; z-index:1; display:grid; gap:28px; max-width:760px;}\n" +
+"  .eyebrow{\n" +
+"    display:inline-flex; align-items:center; gap:10px;\n" +
+'    font-family:"JetBrains Mono",monospace; font-weight:500; font-size:.8rem;\n' +
+"    letter-spacing:.14em; color:var(--teal-700);\n" +
+"  }\n" +
+"  .eyebrow img{height:22px; width:auto;}\n" +
+"  .hero h1{\n" +
+"    font-size:clamp(2.1rem,4.6vw,3.4rem); font-weight:900; line-height:1.35; letter-spacing:.01em;\n" +
+"  }\n" +
+"  .hero h1 em{\n" +
+"    font-style:normal;\n" +
+"    background:linear-gradient(100deg,var(--teal-700),var(--navy-700));\n" +
+"    -webkit-background-clip:text; background-clip:text; color:transparent;\n" +
+"  }\n" +
+"  .hero-lead{font-size:1.05rem; color:var(--ink-soft); max-width:56ch;}\n" +
+"  .hero-actions{display:flex; flex-wrap:wrap; gap:14px; margin-top:6px;}\n" +
+"  .btn{\n" +
+"    display:inline-flex; align-items:center; gap:10px;\n" +
+"    padding:14px 26px; border-radius:999px; font-weight:700; font-size:.98rem;\n" +
+"    text-decoration:none; border:1.5px solid transparent; cursor:pointer;\n" +
+"    transition:transform .15s ease, background .15s ease, border-color .15s ease, color .15s ease;\n" +
+"    font-family:inherit;\n" +
+"  }\n" +
+"  .btn:hover{transform:translateY(-1px);}\n" +
+"  .btn svg{width:18px; height:18px; flex-shrink:0;}\n" +
+"  .btn-primary{background:var(--teal-700); color:#fff;}\n" +
+"  .btn-primary:hover{background:var(--teal-800);}\n" +
+"  .btn-outline{background:transparent; color:var(--ink); border-color:var(--line-strong);}\n" +
+"  .btn-outline:hover{border-color:var(--teal-700); color:var(--teal-700);}\n" +
+"  .hero-strip{\n" +
+"    position:relative; z-index:1; margin-top:clamp(40px,6vw,64px);\n" +
+"    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;\n" +
+"    background:var(--line); border:1px solid var(--line); border-radius:16px; overflow:hidden;\n" +
+"  }\n" +
+"  .hero-strip-item{background:var(--paper); padding:22px 20px;}\n" +
+"  .hero-strip-item h3{font-size:1.02rem; font-weight:700; margin-bottom:6px;}\n" +
+"  .hero-strip-item p{font-size:.88rem; color:var(--ink-soft);}\n" +
+"  @media (max-width:720px){ .hero-strip{grid-template-columns:1fr;} }\n" +
+"\n" +
+"  .section-head{max-width:640px; margin-bottom:clamp(32px,5vw,48px);}\n" +
+"  .section-eyebrow{\n" +
+"    display:flex; align-items:center; gap:8px;\n" +
+'    font-family:"JetBrains Mono",monospace; font-size:.78rem; letter-spacing:.14em;\n' +
+"    text-transform:uppercase; color:var(--teal-700); font-weight:600; margin-bottom:12px;\n" +
+"  }\n" +
+'  .section-eyebrow::before{content:""; width:22px; height:2px; background:var(--teal-700); display:inline-block;}\n' +
+"  .section-head h2{font-size:clamp(1.6rem,3.2vw,2.2rem); font-weight:900;}\n" +
+"  .section-head p{margin-top:14px; color:var(--ink-soft);}\n" +
+"  .tint{background:var(--paper-tint);}\n" +
+"\n" +
+"  .service-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}\n" +
+"  @media (max-width:900px){ .service-grid{grid-template-columns:repeat(2,1fr);} }\n" +
+"  @media (max-width:600px){ .service-grid{grid-template-columns:1fr;} }\n" +
+"  .service-card{\n" +
+"    background:var(--paper); border:1px solid var(--line); border-radius:16px; padding:26px 22px;\n" +
+"    display:flex; flex-direction:column; gap:14px; transition:border-color .15s ease, transform .15s ease;\n" +
+"  }\n" +
+"  .service-card:hover{border-color:var(--line-strong); transform:translateY(-2px);}\n" +
+"  .service-icon{\n" +
+"    width:48px; height:48px; border-radius:12px; display:flex; align-items:center; justify-content:center;\n" +
+"    flex-shrink:0;\n" +
+"  }\n" +
+"  .service-icon svg{width:24px; height:24px; fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round;}\n" +
+"  .service-icon.teal{background:var(--teal-100); }\n" +
+"  .service-icon.teal svg{stroke:var(--teal-700);}\n" +
+"  .service-icon.navy{background:color-mix(in srgb, var(--navy-700) 14%, transparent);}\n" +
+"  .service-icon.navy svg{stroke:var(--navy-700);}\n" +
+"  .service-card h3{font-size:1.04rem; font-weight:700;}\n" +
+"  .service-card p{font-size:.9rem; color:var(--ink-soft);}\n" +
+"  .note-inline{\n" +
+"    margin-top:28px; font-size:.86rem; color:var(--ink-soft);\n" +
+"    border-left:3px solid var(--line-strong); padding-left:14px;\n" +
+"  }\n" +
+"\n" +
+"  .project-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}\n" +
+"  @media (max-width:900px){ .project-grid{grid-template-columns:repeat(2,1fr);} }\n" +
+"  @media (max-width:600px){ .project-grid{grid-template-columns:1fr;} }\n" +
+"  .project-card{\n" +
+"    background:var(--paper); border:1px solid var(--line); border-radius:16px; overflow:hidden;\n" +
+"    display:flex; flex-direction:column; transition:border-color .15s ease, transform .15s ease;\n" +
+"  }\n" +
+"  .project-card:hover{border-color:var(--line-strong); transform:translateY(-2px);}\n" +
+"  .project-photo{width:100%; aspect-ratio:4/3; object-fit:cover; display:block; background:var(--paper-tint);}\n" +
+"  .project-photo-empty{background:linear-gradient(135deg, var(--paper-tint), var(--line));}\n" +
+"  .project-body{padding:16px 18px 20px;}\n" +
+"  .project-tag{\n" +
+"    display:inline-block; background:var(--teal-100); color:var(--teal-800);\n" +
+"    font-size:.8rem; font-weight:700; padding:5px 13px; border-radius:999px;\n" +
+"  }\n" +
+"  .project-text{margin-top:10px; font-size:.92rem; line-height:1.65; color:var(--ink-soft);}\n" +
+"\n" +
+"  .about-layout{display:grid; grid-template-columns:1.1fr 1fr; gap:48px; align-items:start;}\n" +
+"  @media (max-width:860px){ .about-layout{grid-template-columns:1fr;} }\n" +
+"  .info-table{width:100%; border-collapse:collapse;}\n" +
+"  .info-table tr{border-bottom:1px solid var(--line);}\n" +
+"  .info-table tr:first-child{border-top:1px solid var(--line);}\n" +
+"  .info-table th{\n" +
+"    text-align:left; padding:16px 16px 16px 0; width:9.5em; font-weight:700;\n" +
+"    font-size:.88rem; color:var(--navy-700); vertical-align:top;\n" +
+'    font-family:"JetBrains Mono",monospace; letter-spacing:.03em;\n' +
+"  }\n" +
+"  .info-table td{padding:16px 0; vertical-align:top;}\n" +
+"  .about-visual{\n" +
+"    border-radius:18px; overflow:hidden; border:1px solid var(--line);\n" +
+"    background:linear-gradient(155deg,var(--navy-900),var(--teal-800));\n" +
+"    aspect-ratio:4/3; display:flex; align-items:center; justify-content:center; padding:36px;\n" +
+"  }\n" +
+"  .about-visual .plate{\n" +
+"    background:#fff; border-radius:16px; padding:26px 30px; box-shadow:0 18px 40px -18px rgba(0,0,0,.5);\n" +
+"  }\n" +
+"  .about-visual .plate img{height:70px; width:auto;}\n" +
+"\n" +
+"  .history-note{\n" +
+"    margin-top:28px; border:1.5px dashed var(--line-strong); border-radius:14px;\n" +
+"    padding:20px 22px; display:flex; gap:14px; align-items:flex-start;\n" +
+"    color:var(--ink-soft); font-size:.9rem; background:var(--paper);\n" +
+"  }\n" +
+"  .history-note svg{width:20px; height:20px; stroke:var(--teal-700); fill:none; stroke-width:1.6; flex-shrink:0; margin-top:2px;}\n" +
+"\n" +
+"  .careers-panel{\n" +
+"    background:var(--paper); border:1px solid var(--line); border-radius:20px;\n" +
+"    padding:clamp(28px,4vw,44px); display:grid; grid-template-columns:1.1fr 1fr; gap:40px;\n" +
+"  }\n" +
+"  @media (max-width:860px){ .careers-panel{grid-template-columns:1fr;} }\n" +
+"  .careers-panel h3{font-size:1.3rem; font-weight:800; margin-bottom:14px;}\n" +
+"  .careers-panel p{color:var(--ink-soft); margin-bottom:20px;}\n" +
+"  .tag-row{display:flex; flex-wrap:wrap; gap:8px;}\n" +
+"  .tag{\n" +
+"    background:var(--teal-100); color:var(--teal-800); font-size:.82rem; font-weight:600;\n" +
+"    padding:6px 13px; border-radius:999px;\n" +
+"  }\n" +
+"  .careers-table{width:100%; border-collapse:collapse;}\n" +
+"  .careers-table tr{border-bottom:1px solid var(--line);}\n" +
+"  .careers-table tr:first-child{border-top:1px solid var(--line);}\n" +
+"  .careers-table th{\n" +
+"    text-align:left; padding:14px 14px 14px 0; width:7em; font-size:.85rem;\n" +
+'    color:var(--navy-700); font-family:"JetBrains Mono",monospace; vertical-align:top;\n' +
+"  }\n" +
+"  .careers-table td{padding:14px 0; font-size:.94rem;}\n" +
+"\n" +
+"  .contact-grid{display:grid; grid-template-columns:.9fr 1.1fr; gap:44px; align-items:start;}\n" +
+"  @media (max-width:900px){ .contact-grid{grid-template-columns:1fr;} }\n" +
+"  .contact-card{\n" +
+"    background:var(--navy-900); color:#fff; border-radius:20px; padding:clamp(28px,4vw,40px);\n" +
+"    display:flex; flex-direction:column; gap:22px;\n" +
+"  }\n" +
+"  .contact-row{display:flex; gap:14px; align-items:flex-start;}\n" +
+"  .contact-row svg{width:20px; height:20px; stroke:#bcd6d2; fill:none; stroke-width:1.6; margin-top:3px; flex-shrink:0;}\n" +
+'  .contact-row .label{font-size:.78rem; text-transform:uppercase; letter-spacing:.1em; color:#9fc2bd; font-family:"JetBrains Mono",monospace; margin-bottom:4px;}\n' +
+"  .contact-row .value{font-size:1.15rem; font-weight:700;}\n" +
+"  .contact-row .value.small{font-size:.98rem; font-weight:500;}\n" +
+"  .copy-btn{\n" +
+"    display:inline-flex; align-items:center; gap:6px; margin-top:8px;\n" +
+"    background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2); color:#fff;\n" +
+"    padding:6px 12px; border-radius:999px; font-size:.78rem; cursor:pointer; font-family:inherit;\n" +
+"  }\n" +
+"  .copy-btn:hover{background:rgba(255,255,255,.18);}\n" +
+"  .copy-btn svg{width:13px; height:13px; stroke:#fff; fill:none; stroke-width:1.8;}\n" +
+"  .map-link{\n" +
+"    display:inline-flex; align-items:center; gap:8px; margin-top:6px; color:#cfe7e4;\n" +
+"    text-decoration:underline; font-size:.9rem;\n" +
+"  }\n" +
+"  .map-link-light{\n" +
+"    display:inline-flex; align-items:center; gap:6px; margin-top:8px; color:var(--teal-700);\n" +
+"    text-decoration:underline; font-size:.86rem; font-weight:600;\n" +
+"  }\n" +
+"  .contact-hr{height:1px; background:rgba(255,255,255,.14); border:none;}\n" +
+"\n" +
+"  .form-card{\n" +
+"    background:var(--paper); border:1px solid var(--line); border-radius:20px;\n" +
+"    padding:clamp(26px,4vw,38px);\n" +
+"  }\n" +
+"  .field{display:flex; flex-direction:column; gap:6px; margin-bottom:18px;}\n" +
+"  .field label{font-size:.86rem; font-weight:700;}\n" +
+"  .field .req{color:var(--teal-700); font-weight:700; margin-left:2px;}\n" +
+"  .field input, .field textarea, .field select{\n" +
+"    font:inherit; padding:12px 14px; border-radius:10px; border:1.5px solid var(--line-strong);\n" +
+"    background:var(--paper); color:var(--ink); resize:vertical;\n" +
+"  }\n" +
+"  .field input:focus, .field textarea:focus, .field select:focus{border-color:var(--teal-700);}\n" +
+"  .field-row{display:grid; grid-template-columns:1fr 1fr; gap:16px;}\n" +
+"  @media (max-width:520px){ .field-row{grid-template-columns:1fr;} }\n" +
+"  .form-note{font-size:.82rem; color:var(--ink-soft); margin-top:2px; margin-bottom:20px;}\n" +
+"  .result-panel{\n" +
+"    margin-top:20px; padding:18px 20px; border-radius:14px; background:var(--teal-050);\n" +
+"    border:1px solid var(--teal-100); display:none; flex-direction:column; gap:12px;\n" +
+"  }\n" +
+"  .result-panel.show{display:flex;}\n" +
+"  .result-panel p{font-size:.9rem; color:var(--ink-soft);}\n" +
+"  .result-actions{display:flex; flex-wrap:wrap; gap:10px;}\n" +
+"  textarea.compose{\n" +
+"    width:100%; min-height:120px; font-family:\"JetBrains Mono\",monospace; font-size:.82rem;\n" +
+"    padding:12px; border-radius:10px; border:1px solid var(--line-strong); background:var(--paper); color:var(--ink);\n" +
+"  }\n" +
+"\n" +
+"  footer.site{\n" +
+"    background:linear-gradient(155deg,var(--navy-900),var(--teal-800));\n" +
+"    color:#eef4f3; padding-block:56px calc(28px + env(safe-area-inset-bottom,0px));\n" +
+"  }\n" +
+"  .footer-inner{display:flex; flex-wrap:wrap; gap:80px; justify-content:flex-start; align-items:flex-start;}\n" +
+"  .footer-plate{background:#fff; border-radius:12px; padding:14px 18px; display:inline-flex;}\n" +
+"  .footer-plate img{height:34px; width:auto;}\n" +
+"  .footer-info{display:flex; flex-direction:column; gap:6px; font-size:.92rem; color:#d7e6e3;}\n" +
+"  .footer-info strong{color:#fff; font-size:1rem;}\n" +
+"  .footer-links{display:grid; grid-template-columns:repeat(2,auto); column-gap:44px; row-gap:12px; align-content:start; margin-top:14px;}\n" +
+"  .footer-links a{text-decoration:none; color:#d7e6e3; font-size:.92rem;}\n" +
+"  .footer-links a:hover{color:#fff;}\n" +
+"  @media (max-width:480px){ .footer-links{grid-template-columns:1fr;} }\n" +
+"  .footer-bottom{\n" +
+"    margin-top:40px; padding-top:20px; border-top:1px solid rgba(255,255,255,.15);\n" +
+"    font-size:.8rem; color:#a9c4c0; display:flex; flex-wrap:wrap; gap:10px; justify-content:center;\n" +
+"  }\n" +
+"</style>";
+
+/* ---- full body builder ---- */
+function buildBody(data, appSrc) {
+  var c = data.company;
+  var telHref = esc(telDigits(c.phone));
+  var telText = esc(c.phone);
+  var safeJson = JSON.stringify(data).replace(/</g, "\\u003c");
+
+  return (
+'<a href="#main" class="skip-link">本文へスキップ</a>\n' +
+'\n' +
+'<header class="site" id="top">\n' +
+'  <div class="nav-inner">\n' +
+'    <a href="#top" class="brand" aria-label="' + esc(c.name) + ' ホーム">\n' +
+'      <span class="brand-plate"><img src="assets/logo-header.png" alt="' + esc(c.name) + '"></span>\n' +
+'    </a>\n' +
+'    <input type="checkbox" id="navToggle" class="nav-toggle">\n' +
+'    <label for="navToggle" class="nav-burger" aria-label="メニューを開く">\n' +
+'      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>\n' +
+'    </label>\n' +
+'    <nav class="nav-links" id="navLinks">\n' +
+'      <a class="navlink" href="#about">会社概要</a>\n' +
+'      <a class="navlink" href="#services">事業内容</a>\n' +
+'      <a class="navlink" href="#projects">施工事例</a>\n' +
+'      <a class="navlink" href="#careers">採用情報</a>\n' +
+'      <a class="navlink" href="#contact">お問い合わせ</a>\n' +
+      instaIconLink(c.instagram) + '\n' +
+'      <a class="nav-phone" href="tel:' + telHref + '">\n' +
+'        <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C11 21 3 13 3 4.7c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.3 1.1L6.6 10.8z" stroke="none" fill="#fff"/></svg>\n' +
+'        ' + telText + '\n' +
+'      </a>\n' +
+'    </nav>\n' +
+'  </div>\n' +
+'</header>\n' +
+'\n' +
+'<main id="main">\n' +
+'  <div class="hero">\n' +
+'    <div class="hero-blob blob-a"></div>\n' +
+'    <div class="hero-blob blob-b"></div>\n' +
+'    <div class="wrap">\n' +
+'      <div class="hero-inner">\n' +
+'        <span class="eyebrow"><img src="assets/logo-mark.png" alt="">Electricity</span>\n' +
+'        <h1>明るい毎日を、<br><em>変わらない明日</em>へ。</h1>\n' +
+'        <p class="hero-lead">' + esc(c.name) + 'は、岡山市を拠点とする電気工事会社です。<br>一般電気工事から受変電設備、太陽光発電設備まで、<br>地域のインフラを現場の技術で支えています。</p>\n' +
+'        <div class="hero-actions">\n' +
+'          <a class="btn btn-primary" href="#contact">問い合わせする</a>\n' +
+'          <a class="btn btn-outline" href="tel:' + telHref + '">\n' +
+'            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C11 21 3 13 3 4.7c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.3 1.1L6.6 10.8z"/></svg>\n' +
+'            ' + telText + ' に電話する\n' +
+'          </a>\n' +
+'        </div>\n' +
+'      </div>\n' +
+'\n' +
+'      <div class="hero-strip">\n' +
+'        <div class="hero-strip-item">\n' +
+'          <h3>確かな施工品質</h3>\n' +
+'          <p>丁寧な施工と現場管理を徹底し、永く安心してお使いいただける設備をご提供します。</p>\n' +
+'        </div>\n' +
+'        <div class="hero-strip-item">\n' +
+'          <h3>地域密着の対応力</h3>\n' +
+'          <p>岡山市を拠点に、県内及び近隣エリアの現場へ迅速に対応します。</p>\n' +
+'        </div>\n' +
+'        <div class="hero-strip-item">\n' +
+'          <h3>安全第一の現場づくり</h3>\n' +
+'          <p>電気を扱う工事だからこそ、安全管理を最優先に進めています。</p>\n' +
+'        </div>\n' +
+'      </div>\n' +
+'    </div>\n' +
+'  </div>\n' +
+'\n' +
+'  <section id="about" class="tint">\n' +
+'    <div class="wrap">\n' +
+'      <div class="section-head">\n' +
+'        <span class="section-eyebrow">Company</span>\n' +
+'        <h2>会社概要</h2>\n' +
+'      </div>\n' +
+'      <div class="about-layout">\n' +
+'        <table class="info-table">\n' +
+          renderCompanyRows(c) + '\n' +
+'        </table>\n' +
+'        <div class="about-visual">\n' +
+'          <div class="plate"><img src="assets/logo-header.png" alt="' + esc(c.name) + '"></div>\n' +
+'        </div>\n' +
+'      </div>\n' +
+'    </div>\n' +
+'  </section>\n' +
+'\n' +
+'  <section id="services">\n' +
+'    <div class="wrap">\n' +
+'      <div class="section-head">\n' +
+'        <span class="section-eyebrow">Services</span>\n' +
+'        <h2>事業内容・サービス紹介</h2>\n' +
+'        <p>公共施設から学校・住宅・店舗まで、電気設備に関わる工事を幅広く承っています。以下は代表的な工事内容です。</p>\n' +
+'      </div>\n' +
+'      <div class="service-grid">' + renderServices(data.services) + '</div>\n' +
+'      <p class="note-inline">上記は電気設備工事として一般的な業務例です。お困りごとがあれば一度ご相談ください。</p>\n' +
+'    </div>\n' +
+'  </section>\n' +
+'\n' +
+'  <section id="projects">\n' +
+'    <div class="wrap">\n' +
+'      <div class="section-head">\n' +
+'        <span class="section-eyebrow">Projects</span>\n' +
+'        <h2>施工事例</h2>\n' +
+'        <p>建物の種類や規模に応じて、これまで対応してきた工事内容の一例です。</p>\n' +
+'      </div>\n' +
+      renderProjects(data.projects) + '\n' +
+'    </div>\n' +
+'  </section>\n' +
+'\n' +
+'  <section id="careers">\n' +
+'    <div class="wrap">\n' +
+'      <div class="section-head">\n' +
+'        <span class="section-eyebrow">Careers</span>\n' +
+'        <h2>採用情報</h2>\n' +
+'        <p>私たちと一緒に、地域の電気インフラを支えませんか。</p>\n' +
+'      </div>\n' +
+'      <div class="careers-panel">\n' +
+'        <div>\n' +
+'          <h3>募集職種</h3>\n' +
+'          <div class="tag-row">' + renderCareerTags(data.careers.roles) + '</div>\n' +
+'          <p style="margin-top:20px;">経験の浅い方も、先輩スタッフが現場で丁寧に指導します。まずはお気軽にお問い合わせください。</p>\n' +
+'          <a class="btn btn-primary" href="#contact">お問い合わせへ進む</a>\n' +
+'        </div>\n' +
+'        <table class="careers-table">' + renderCareerRows(data.careers) + '</table>\n' +
+'      </div>\n' +
+'    </div>\n' +
+'  </section>\n' +
+'\n' +
+'  <section id="contact" class="tint">\n' +
+'    <div class="wrap">\n' +
+'      <div class="section-head">\n' +
+'        <span class="section-eyebrow">Contact</span>\n' +
+'        <h2>お問い合わせ</h2>\n' +
+'        <p>工事のご相談、お見積り、採用に関するお問い合わせなど、お気軽にご連絡ください。</p>\n' +
+'      </div>\n' +
+'      <div class="contact-grid">\n' +
+'        <div class="contact-card">\n' +
+'          <div class="contact-row">\n' +
+'            <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C11 21 3 13 3 4.7c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.3 1.1L6.6 10.8z"/></svg>\n' +
+'            <div style="flex:1;">\n' +
+'              <div class="label">Tel</div>\n' +
+'              <div class="value mono">' + telText + '</div>\n' +
+'              <button class="copy-btn" type="button" data-copy="' + esc(c.phone) + '">\n' +
+'                <svg viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="1.5"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>\n' +
+'                番号をコピー\n' +
+'              </button>\n' +
+'            </div>\n' +
+'          </div>\n' +
+'          <hr class="contact-hr">\n' +
+'          <div class="contact-row">\n' +
+'            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>\n' +
+'            <div style="flex:1;">\n' +
+'              <div class="label">Mail</div>\n' +
+'              <div class="value small mono">' + esc(c.email) + '</div>\n' +
+'              <button class="copy-btn" type="button" data-copy="' + esc(c.email) + '">\n' +
+'                <svg viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="1.5"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>\n' +
+'                アドレスをコピー\n' +
+'              </button>\n' +
+'            </div>\n' +
+'          </div>\n' +
+'          <hr class="contact-hr">\n' +
+'          <div class="contact-row">\n' +
+'            <svg viewBox="0 0 24 24"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.4"/></svg>\n' +
+'            <div style="flex:1;">\n' +
+'              <div class="label">Address</div>\n' +
+'              <div class="value small">〒' + esc(c.postal) + '<br>' + esc(c.address) + '</div>\n' +
+'              <a class="map-link" id="mapLink" href="#" target="_blank" rel="noopener">地図で見る（Googleマップ）↗</a>\n' +
+'            </div>\n' +
+'          </div>\n' +
+'          <hr class="contact-hr">\n' +
+'          <div class="contact-row">\n' +
+'            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M4.5 20c1.4-3.6 4.3-5.5 7.5-5.5s6.1 1.9 7.5 5.5"/></svg>\n' +
+'            <div style="flex:1;">\n' +
+'              <div class="label">Representative</div>\n' +
+'              <div class="value small">' + esc(c.representative) + '</div>\n' +
+'            </div>\n' +
+'          </div>\n' +
+          instaContactRow(c.instagram) + '\n' +
+'        </div>\n' +
+'\n' +
+'        <div class="form-card">\n' +
+'          <form id="contactForm" novalidate>\n' +
+'            <div class="field-row">\n' +
+'              <div class="field">\n' +
+'                <label for="f-name">お名前<span class="req">*</span></label>\n' +
+'                <input id="f-name" name="name" type="text" required autocomplete="name">\n' +
+'              </div>\n' +
+'              <div class="field">\n' +
+'                <label for="f-company">会社名・屋号</label>\n' +
+'                <input id="f-company" name="company" type="text" autocomplete="organization">\n' +
+'              </div>\n' +
+'            </div>\n' +
+'            <div class="field-row">\n' +
+'              <div class="field">\n' +
+'                <label for="f-email">メールアドレス</label>\n' +
+'                <input id="f-email" name="email" type="email" autocomplete="email">\n' +
+'              </div>\n' +
+'              <div class="field">\n' +
+'                <label for="f-tel">電話番号</label>\n' +
+'                <input id="f-tel" name="tel" type="tel" autocomplete="tel">\n' +
+'              </div>\n' +
+'            </div>\n' +
+'            <div class="field">\n' +
+'              <label for="f-message">問い合わせ内容<span class="req">*</span></label>\n' +
+'              <textarea id="f-message" name="message" rows="5" required placeholder="工事のご相談内容、ご希望日、採用に関するご質問など"></textarea>\n' +
+'            </div>\n' +
+'            <p class="form-note">このサイトは静的ページのため、送信ボタンからメールアプリを開いて内容をお送りいただく形式です。メールアプリが開かない場合は、下の「内容をコピー」からご利用のメールソフトへ貼り付けてください。</p>\n' +
+'            <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">\n' +
+'              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>\n' +
+'              メールを送信する\n' +
+'            </button>\n' +
+'\n' +
+'            <div class="result-panel" id="resultPanel">\n' +
+'              <p>以下のボタンからメールアプリでお送りいただくか、内容をコピーしてお使いのメールソフト・SNSなどからご連絡ください。</p>\n' +
+'              <textarea class="compose" id="composeText" readonly></textarea>\n' +
+'              <div class="result-actions">\n' +
+'                <a class="btn btn-primary" id="mailtoBtn" href="#" target="_top" rel="noopener">\n' +
+'                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>\n' +
+'                  メールアプリで送信\n' +
+'                </a>\n' +
+'                <button type="button" class="btn btn-outline" id="copyComposeBtn">内容をコピー</button>\n' +
+'              </div>\n' +
+'            </div>\n' +
+'          </form>\n' +
+'        </div>\n' +
+'      </div>\n' +
+'    </div>\n' +
+'  </section>\n' +
+'</main>\n' +
+'\n' +
+'<footer class="site">\n' +
+'  <div class="wrap footer-inner">\n' +
+'    <div style="display:flex; flex-direction:column; gap:18px; max-width:320px;">\n' +
+'      <span class="footer-plate"><img src="assets/logo-header.png" alt="' + esc(c.name) + '"></span>\n' +
+'      <div class="footer-info">\n' +
+'        <strong>' + esc(c.name) + '</strong>\n' +
+'        <span>〒' + esc(c.postal) + '　' + esc(c.address) + '</span>\n' +
+'        <span class="mono">TEL ' + telText + '</span>\n' +
+'        <span>' + esc(c.representative) + '</span>\n' +
+'      </div>\n' +
+'    </div>\n' +
+'    <div class="footer-links">\n' +
+'      <a href="#about">会社概要</a>\n' +
+'      <a href="#services">事業内容</a>\n' +
+'      <a href="#projects">施工事例</a>\n' +
+'      <a href="#careers">採用情報</a>\n' +
+'      <a href="#contact">お問い合わせ</a>\n' +
+      footerInstaLink(c.instagram) + '\n' +
+'    </div>\n' +
+'  </div>\n' +
+'  <div class="wrap footer-bottom">\n' +
+'    <span>&copy; <span id="year"></span> ' + esc(c.name) + '</span>\n' +
+'  </div>\n' +
+'</footer>\n' +
+'\n' +
+SCRIPT_OPEN + ' id="site-data" type="application/json">' + safeJson + SCRIPT_CLOSE + '\n' +
+SCRIPT_OPEN + '>' + appSrc + SCRIPT_CLOSE
+  );
+}
+
+function buildDocument(data, appSrc) {
+  return (
+'<!doctype html>\n' +
+'<html lang="ja">\n' +
+'<head>\n' +
+'<meta charset="utf-8">\n' +
+'<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n' +
+HEAD_EXTRA + '\n' +
+'</head>\n' +
+'<body>\n' +
+buildBody(data, appSrc) + '\n' +
+'</body>\n' +
+'</html>'
+  );
+}
+
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = { buildBody: buildBody, buildDocument: buildDocument, HEAD_EXTRA: HEAD_EXTRA };
+}
+
+/* =========================================================================
+ * Everything below this line only runs in a browser (skipped under Node).
+ * ========================================================================= */
+if (typeof document !== "undefined") {
+  (function () {
+    var dataEl = document.getElementById("site-data");
+    var SITE_DATA = dataEl ? JSON.parse(dataEl.textContent) : null;
+
+    /* ---- footer year ---- */
+    var y = document.getElementById("year");
+    if (y) y.textContent = new Date().getFullYear();
+
+    /* ---- mobile nav: close on link click ---- */
+    var navToggle = document.getElementById("navToggle");
+    var navLinks = document.getElementById("navLinks");
+    if (navLinks && navToggle) {
+      navLinks.querySelectorAll("a").forEach(function (a) {
+        a.addEventListener("click", function () { navToggle.checked = false; });
+      });
+    }
+
+    /* ---- google maps link ---- */
+    var mapLink = document.getElementById("mapLink");
+    if (mapLink && SITE_DATA) {
+      var q = SITE_DATA.company.name + " 〒" + SITE_DATA.company.postal + " " + SITE_DATA.company.address;
+      mapLink.href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q);
+    }
+
+    /* ---- copy buttons ---- */
+    function fallbackSelect(text) {
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      window.setTimeout(function () { document.body.removeChild(ta); }, 2000);
+    }
+    function wireCopyButton(btn) {
+      btn.addEventListener("click", function () {
+        var text = btn.getAttribute("data-copy");
+        var original = btn.innerHTML;
+        function done(ok) {
+          btn.textContent = ok ? "コピーしました" : "選択しました。⌘/Ctrlキー+Cでコピー";
+          window.setTimeout(function () { btn.innerHTML = original; }, 2200);
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () { done(true); }).catch(function () {
+            fallbackSelect(text); done(false);
+          });
+        } else {
+          fallbackSelect(text); done(false);
+        }
+      });
+    }
+    document.querySelectorAll(".copy-btn[data-copy]").forEach(wireCopyButton);
+
+    /* ---- contact form -> compose mailto ---- */
+    var form = document.getElementById("contactForm");
+    var resultPanel = document.getElementById("resultPanel");
+    var composeText = document.getElementById("composeText");
+    var mailtoBtn = document.getElementById("mailtoBtn");
+    var copyComposeBtn = document.getElementById("copyComposeBtn");
+    var TARGET_MAIL = SITE_DATA ? SITE_DATA.company.email : "";
+
+    if (form) {
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var name = form.name.value.trim();
+        var message = form.message.value.trim();
+        if (!name || !message) {
+          if (!name) form.name.reportValidity();
+          else form.message.reportValidity();
+          return;
+        }
+        var company = form.company.value.trim();
+        var email = form.email.value.trim();
+        var tel = form.tel.value.trim();
+
+        var lines = [];
+        lines.push("お名前：" + name);
+        if (company) lines.push("会社名・屋号：" + company);
+        if (email) lines.push("連絡先メール：" + email);
+        if (tel) lines.push("連絡先電話：" + tel);
+        lines.push("");
+        lines.push("お問い合わせ内容：");
+        lines.push(message);
+        var body = lines.join("\n");
+        var subject = "【ホームページ】お問い合わせ（" + name + "様）";
+
+        composeText.value = "宛先：" + TARGET_MAIL + "\n件名：" + subject + "\n\n" + body;
+        var mailHref = "mailto:" + TARGET_MAIL + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+        mailtoBtn.href = mailHref;
+        resultPanel.classList.add("show");
+        resultPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+
+        /* Try to open the mail app immediately on submit, in the same click
+           gesture, so most visitors never need the extra click. If the
+           surrounding page is inside a sandboxed frame (e.g. a preview) this
+           attempt may be blocked by the browser; the panel above with the
+           "メールアプリで送信" button and the copy-to-clipboard fallback
+           still lets the visitor complete it manually. */
+        try {
+          var tempLink = document.createElement("a");
+          tempLink.href = mailHref;
+          tempLink.target = "_top";
+          tempLink.rel = "noopener";
+          document.body.appendChild(tempLink);
+          tempLink.click();
+          document.body.removeChild(tempLink);
+        } catch (err) { /* ignore; manual button below still works */ }
+      });
+    }
+
+    if (copyComposeBtn) {
+      copyComposeBtn.addEventListener("click", function () {
+        var text = composeText.value;
+        var original = copyComposeBtn.textContent;
+        function done(ok) {
+          copyComposeBtn.textContent = ok ? "コピーしました" : "選択しました";
+          window.setTimeout(function () { copyComposeBtn.textContent = original; }, 2200);
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () { done(true); }).catch(function () {
+            composeText.focus(); composeText.select(); done(false);
+          });
+        } else {
+          composeText.focus(); composeText.select(); done(false);
+        }
+      });
+    }
+
+  })();
+}
+</script>
+</body>
+</html>
