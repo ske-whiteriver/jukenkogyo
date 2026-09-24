@@ -22,40 +22,6 @@
     --focus:#005859;
     color-scheme: light;
   }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --teal-700:#3ea89f;
-      --teal-800:#2a7d76;
-      --teal-100:#123330;
-      --teal-050:#0f2624;
-      --navy-700:#6f8fe0;
-      --navy-900:#0a1830;
-      --ink:#eef0ee;
-      --ink-soft:#aeb6b0;
-      --paper:#0b100e;
-      --paper-tint:#121a17;
-      --line:#233330;
-      --line-strong:#2d423d;
-      --focus:#4fbdb3;
-      color-scheme: dark;
-    }
-  }
-  :root[data-theme="dark"]{
-    --teal-700:#3ea89f;
-    --teal-800:#2a7d76;
-    --teal-100:#123330;
-    --teal-050:#0f2624;
-    --navy-700:#6f8fe0;
-    --navy-900:#0a1830;
-    --ink:#eef0ee;
-    --ink-soft:#aeb6b0;
-    --paper:#0b100e;
-    --paper-tint:#121a17;
-    --line:#233330;
-    --line-strong:#2d423d;
-    --focus:#4fbdb3;
-    color-scheme: dark;
-  }
 
   *{box-sizing:border-box;}
   body{
@@ -272,6 +238,26 @@
   }
   .project-text{margin-top:10px; font-size:.92rem; line-height:1.65; color:var(--ink-soft);}
 
+  .projects-more{text-align:center; margin-top:32px;}
+
+  .works-section{padding-block:64px;}
+  .back-link{
+    display:inline-flex; align-items:center; gap:6px; color:var(--teal-700); text-decoration:none;
+    font-size:.9rem; font-weight:600; margin-bottom:20px;
+  }
+  .back-link:hover{text-decoration:underline;}
+  .pagination{display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:8px; margin-top:40px;}
+  .pagination a, .pagination span{
+    display:inline-flex; align-items:center; justify-content:center; min-width:38px; height:38px;
+    border-radius:8px; border:1px solid var(--line-strong); text-decoration:none; color:var(--ink);
+    font-size:.9rem; font-weight:600; padding:0 6px;
+  }
+  .pagination a:hover{border-color:var(--teal-700); color:var(--teal-700);}
+  .pagination a.current, .pagination span.current{
+    background:var(--teal-700); border-color:var(--teal-700); color:#fff;
+  }
+  .pagination span.ellipsis{border-color:transparent; color:var(--ink-soft);}
+
   .about-layout{display:grid; grid-template-columns:1.1fr 1fr; gap:48px; align-items:start;}
   @media (max-width:860px){ .about-layout{grid-template-columns:1fr;} }
   .info-table{width:100%; border-collapse:collapse;}
@@ -343,10 +329,6 @@
     display:inline-flex; align-items:center; gap:8px; margin-top:6px; color:#cfe7e4;
     text-decoration:underline; font-size:.9rem;
   }
-  .map-link-light{
-    display:inline-flex; align-items:center; gap:6px; margin-top:8px; color:var(--teal-700);
-    text-decoration:underline; font-size:.86rem; font-weight:600;
-  }
   .contact-hr{height:1px; background:rgba(255,255,255,.14); border:none;}
 
   .form-card{
@@ -377,21 +359,23 @@
   }
 
   footer.site{
-    background:linear-gradient(155deg,var(--navy-900),var(--teal-800));
+    background:linear-gradient(155deg,#0d7377,#146fb0);
     color:#eef4f3; padding-block:56px calc(28px + env(safe-area-inset-bottom,0px));
   }
-  .footer-inner{display:flex; flex-wrap:wrap; gap:80px; justify-content:flex-start; align-items:flex-start;}
-  .footer-plate{background:#fff; border-radius:12px; padding:14px 18px; display:inline-flex;}
+  .footer-inner{display:flex; flex-wrap:wrap; gap:64px; justify-content:center; align-items:center;}
+  .footer-brand{display:flex; flex-direction:row; align-items:center; gap:48px;}
+  .footer-plate{background:#fff; border-radius:12px; padding:14px 18px; display:inline-flex; flex-shrink:0;}
   .footer-plate img{height:34px; width:auto;}
-  .footer-info{display:flex; flex-direction:column; gap:6px; font-size:.92rem; color:#d7e6e3;}
+  .footer-info{display:flex; flex-direction:column; gap:6px; font-size:.92rem; color:#eef6f4; white-space:nowrap;}
   .footer-info strong{color:#fff; font-size:1rem;}
-  .footer-links{display:grid; grid-template-columns:repeat(2,auto); column-gap:44px; row-gap:12px; align-content:start; margin-top:14px;}
-  .footer-links a{text-decoration:none; color:#d7e6e3; font-size:.92rem;}
+  @media (max-width:560px){ .footer-brand{flex-direction:column; align-items:flex-start;} .footer-info{white-space:normal;} }
+  .footer-links{display:grid; grid-template-columns:repeat(2,auto); column-gap:48px; row-gap:12px; align-content:center;}
+  .footer-links a{text-decoration:none; color:#eef6f4; font-size:.92rem;}
   .footer-links a:hover{color:#fff;}
-  @media (max-width:480px){ .footer-links{grid-template-columns:1fr;} }
+  @media (max-width:480px){ .footer-links{grid-template-columns:1fr; justify-items:center; text-align:center;} }
   .footer-bottom{
-    margin-top:40px; padding-top:20px; border-top:1px solid rgba(255,255,255,.15);
-    font-size:.8rem; color:#a9c4c0; display:flex; flex-wrap:wrap; gap:10px; justify-content:center;
+    margin-top:40px; padding-top:20px; border-top:1px solid rgba(255,255,255,.22);
+    font-size:.8rem; color:#e6f2f0; display:flex; flex-wrap:wrap; gap:10px; justify-content:center;
   }
 </style>
 </head>
@@ -465,7 +449,7 @@
       </div>
       <div class="about-layout">
         <table class="info-table">
-<tr><th>会社名</th><td>株式会社住研工業</td></tr><tr><th>代表者</th><td>代表取締役　白川 雄盛</td></tr><tr><th>所在地</th><td class="mono">〒702-8051<br>岡山市南区築港元町1-20<br><a class="map-link-light" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE%E4%BD%8F%E7%A0%94%E5%B7%A5%E6%A5%AD%20%E3%80%92702-8051%20%E5%B2%A1%E5%B1%B1%E5%B8%82%E5%8D%97%E5%8C%BA%E7%AF%89%E6%B8%AF%E5%85%83%E7%94%BA1-20" target="_blank" rel="noopener">地図で見る（Googleマップ）↗</a></td></tr><tr><th>電話番号</th><td class="mono"><a href="tel:09089857700">090-8985-7700</a></td></tr><tr><th>事業内容</th><td>電気設備工事一式</td></tr>
+<tr><th>会社名</th><td>株式会社住研工業</td></tr><tr><th>代表者</th><td>代表取締役　白川 雄盛</td></tr><tr><th>所在地</th><td class="mono">〒702-8051<br>岡山市南区築港元町1-20</td></tr><tr><th>電話番号</th><td class="mono"><a href="tel:09089857700">090-8985-7700</a></td></tr><tr><th>事業内容</th><td>電気設備工事一式</td></tr>
         </table>
         <div class="about-visual">
           <div class="plate"><img src="assets/logo-header.png" alt="株式会社住研工業"></div>
@@ -478,10 +462,10 @@
     <div class="wrap">
       <div class="section-head">
         <span class="section-eyebrow">Services</span>
-        <h2>事業内容・サービス紹介</h2>
-        <p>公共施設から学校・住宅・店舗まで、電気設備に関わる工事を幅広く承っています。以下は代表的な工事内容です。</p>
+        <h2>事業内容</h2>
+        <p>公共施設から学校・住宅・店舗まで、電気設備に関わる工事を幅広く承っています。<br>以下は代表的な工事内容です。</p>
       </div>
-      <div class="service-grid"><div class="service-card"><span class="service-icon teal"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></span><h3>一般電気設備工事</h3><p>住宅・店舗・オフィスなどの新築・改築・改修に伴う電気設備工事に対応します。</p></div><div class="service-card"><span class="service-icon navy"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1.6"/><line x1="9" y1="7.5" x2="9" y2="11"/><line x1="15" y1="7.5" x2="15" y2="11"/><line x1="9" y1="14" x2="9" y2="17.5"/><line x1="15" y1="14" x2="15" y2="17.5"/></svg></span><h3>受変電設備工事</h3><p>キュービクルなど受変電設備の新設・更新工事、点検にも対応いたします。</p></div><div class="service-card"><span class="service-icon teal"><svg viewBox="0 0 24 24"><path d="M3 12c2.4 0 2.4-4 4.8-4s2.4 4 4.8 4 2.4-4 4.8-4 2.4 4 4.8 4"/><circle cx="3" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="21" cy="12" r="1" fill="currentColor" stroke="none"/></svg></span><h3>弱電工事</h3><p>屋内配線から屋外配線まで、用途や現場条件に応じた配線工事を行います。</p></div><div class="service-card"><span class="service-icon navy"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.6"/><line x1="12" y1="2.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21.5"/><line x1="2.5" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="21.5" y2="12"/><line x1="5.1" y1="5.1" x2="6.8" y2="6.8"/><line x1="17.2" y1="17.2" x2="18.9" y2="18.9"/><line x1="5.1" y1="18.9" x2="6.8" y2="17.2"/><line x1="17.2" y1="6.8" x2="18.9" y2="5.1"/></svg></span><h3>太陽光発電設備工事</h3><p>太陽光発電システムの設置工事に対応。導入のご相談もお気軽にどうぞ。</p></div><div class="service-card"><span class="service-icon teal"><svg viewBox="0 0 24 24"><path d="M9 18h6M9.5 21h5M12 3a5.5 5.5 0 0 0-3 10.1c.6.4 1 1.1 1 1.9h4c0-.8.4-1.5 1-1.9A5.5 5.5 0 0 0 12 3z"/></svg></span><h3>照明設備工事</h3><p>LED化や照明器具の新設・交換など、省エネにつながる照明工事を行います。</p></div><div class="service-card"><span class="service-icon navy"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12.3l2.6 2.6L16.2 9.2"/></svg></span><h3>保守点検・メンテナンス</h3><p>設置後の定期点検や不具合対応など、長く安心してお使いいただくための保守を行います。</p></div></div>
+      <div class="service-grid"><div class="service-card"><span class="service-icon teal"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></span><h3>一般電気設備工事</h3><p>住宅・店舗・オフィスなどの新築・改築・改修に伴う電気設備工事に対応します。</p></div><div class="service-card"><span class="service-icon navy"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1.6"/><line x1="9" y1="7.5" x2="9" y2="11"/><line x1="15" y1="7.5" x2="15" y2="11"/><line x1="9" y1="14" x2="9" y2="17.5"/><line x1="15" y1="14" x2="15" y2="17.5"/></svg></span><h3>受変電設備工事</h3><p>キュービクルなど受変電設備の新設・更新工事、点検にも対応いたします。</p></div><div class="service-card"><span class="service-icon teal"><svg viewBox="0 0 24 24"><path d="M9 18h6M9.5 21h5M12 3a5.5 5.5 0 0 0-3 10.1c.6.4 1 1.1 1 1.9h4c0-.8.4-1.5 1-1.9A5.5 5.5 0 0 0 12 3z"/></svg></span><h3>照明設備工事</h3><p>LED化や照明器具の新設・交換など、省エネにつながる照明工事を行います。</p></div><div class="service-card"><span class="service-icon navy"><svg viewBox="0 0 24 24"><path d="M3 12c2.4 0 2.4-4 4.8-4s2.4 4 4.8 4 2.4-4 4.8-4 2.4 4 4.8 4"/><circle cx="3" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="21" cy="12" r="1" fill="currentColor" stroke="none"/></svg></span><h3>弱電工事</h3><p>屋内配線から屋外配線まで、用途や現場条件に応じた配線工事を行います。</p></div><div class="service-card"><span class="service-icon teal"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.6"/><line x1="12" y1="2.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21.5"/><line x1="2.5" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="21.5" y2="12"/><line x1="5.1" y1="5.1" x2="6.8" y2="6.8"/><line x1="17.2" y1="17.2" x2="18.9" y2="18.9"/><line x1="5.1" y1="18.9" x2="6.8" y2="17.2"/><line x1="17.2" y1="6.8" x2="18.9" y2="5.1"/></svg></span><h3>太陽光発電設備工事</h3><p>太陽光発電システムの設置工事に対応。導入のご相談もお気軽にどうぞ。</p></div><div class="service-card"><span class="service-icon navy"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12.3l2.6 2.6L16.2 9.2"/></svg></span><h3>保守点検・メンテナンス</h3><p>設置後の定期点検や不具合対応など、長く安心してお使いいただくための保守を行います。</p></div></div>
       <p class="note-inline">上記は電気設備工事として一般的な業務例です。お困りごとがあれば一度ご相談ください。</p>
     </div>
   </section>
@@ -491,9 +475,10 @@
       <div class="section-head">
         <span class="section-eyebrow">Projects</span>
         <h2>施工事例</h2>
-        <p>建物の種類や規模に応じて、これまで対応してきた工事内容の一例です。</p>
+        <p>これまで弊社で施工してきた工事内容の一例です。</p>
       </div>
-<div class="project-grid"><div class="project-card"><img class="project-photo" src="assets/projects/project-08.jpg" alt="公共工事" loading="lazy"><div class="project-body"><span class="project-tag">公共工事</span><p class="project-text">犬養木堂記念館等 照明LED化工事</p></div></div><div class="project-card"><img class="project-photo" src="assets/projects/project-14.jpg" alt="公共工事" loading="lazy"><div class="project-body"><span class="project-tag">公共工事</span><p class="project-text">岡山市立芥子山小学校 体育館照明器具ほか改修工事</p></div></div><div class="project-card"><img class="project-photo" src="assets/projects/project-12.jpg" alt="公共工事" loading="lazy"><div class="project-body"><span class="project-tag">公共工事</span><p class="project-text">岡山市立富山公民館 照明設備ほか改修工事</p></div></div><div class="project-card"><img class="project-photo" src="assets/projects/project-09.jpg" alt="公共工事" loading="lazy"><div class="project-body"><span class="project-tag">公共工事</span><p class="project-text">角山小学校 特別教室空調設備更新に伴う電気設備工事</p></div></div><div class="project-card"><img class="project-photo" src="assets/projects/project-06.jpg" alt="公共工事" loading="lazy"><div class="project-body"><span class="project-tag">公共工事</span><p class="project-text">上道中学校 特別教室空調設備更新に伴う電気設備工事</p></div></div><div class="project-card"><img class="project-photo" src="assets/projects/project-13.jpg" alt="公共工事" loading="lazy"><div class="project-body"><span class="project-tag">公共工事</span><p class="project-text">岡山県立岡山瀬戸高等支援学校 空調設備整備に伴う電気設備工事</p></div></div><div class="project-card"><img class="project-photo" src="assets/projects/project-11.jpg" alt="公共工事" loading="lazy"><div class="project-body"><span class="project-tag">公共工事</span><p class="project-text">岡山市立古都小学校内 児童クラブ室増築に伴う電気設備工事</p></div></div><div class="project-card"><img class="project-photo" src="assets/projects/project-01.jpg" alt="公共工事" loading="lazy"><div class="project-body"><span class="project-tag">公共工事</span><p class="project-text">岡山市立旭東小学校内 児童クラブ室改築に伴う電気設備工事</p></div></div><div class="project-card"><img class="project-photo" src="assets/projects/project-02.jpg" alt="公共工事" loading="lazy"><div class="project-body"><span class="project-tag">公共工事</span><p class="project-text">岡山市立建部中学校 配膳室棟新築に伴う電気設備工事</p></div></div><div class="project-card"><img class="project-photo" src="assets/projects/project-07.jpg" alt="公共工事" loading="lazy"><div class="project-body"><span class="project-tag">公共工事</span><p class="project-text">岡山市立津島小学校 給水設備ほか改修に伴う電気設備工事</p></div></div><div class="project-card"><img class="project-photo" src="assets/projects/project-10.jpg" alt="公共工事" loading="lazy"><div class="project-body"><span class="project-tag">公共工事</span><p class="project-text">岡山大学（津島）農学部Ⅱ号館 エレベータ棟新営電気設備工事</p></div></div><div class="project-card"><img class="project-photo" src="assets/projects/project-03.jpg" alt="公共工事" loading="lazy"><div class="project-body"><span class="project-tag">公共工事</span><p class="project-text">岡山市福祉交流プラザ 山南エレベーター棟増築に伴う電気設備工事</p></div></div><div class="project-card"><img class="project-photo" src="assets/projects/project-05.jpg" alt="公共工事" loading="lazy"><div class="project-body"><span class="project-tag">公共工事</span><p class="project-text">岡山市立城東台小学校 太陽光発電設備改修工事</p></div></div><div class="project-card"><img class="project-photo" src="assets/projects/project-04.jpg" alt="公共工事" loading="lazy"><div class="project-body"><span class="project-tag">公共工事</span><p class="project-text">中央卸売市場 場内トイレ改修に伴う電気設備工事</p></div></div></div>
+<div class="project-grid"><div class="project-card"><img class="project-photo" src="assets/projects/project-08.jpg" alt="公共工事" loading="lazy"><div class="project-body"><span class="project-tag">公共工事</span><p class="project-text">犬養木堂記念館等 照明LED化工事</p></div></div><div class="project-card"><img class="project-photo" src="assets/projects/project-14.jpg" alt="公共工事" loading="lazy"><div class="project-body"><span class="project-tag">公共工事</span><p class="project-text">岡山市立芥子山小学校 体育館照明器具ほか改修工事</p></div></div><div class="project-card"><img class="project-photo" src="assets/projects/project-12.jpg" alt="公共工事" loading="lazy"><div class="project-body"><span class="project-tag">公共工事</span><p class="project-text">岡山市立富山公民館 照明設備ほか改修工事</p></div></div><div class="project-card"><img class="project-photo" src="assets/projects/project-09.jpg" alt="公共工事" loading="lazy"><div class="project-body"><span class="project-tag">公共工事</span><p class="project-text">角山小学校 特別教室空調設備更新に伴う電気設備工事</p></div></div><div class="project-card"><img class="project-photo" src="assets/projects/project-06.jpg" alt="公共工事" loading="lazy"><div class="project-body"><span class="project-tag">公共工事</span><p class="project-text">上道中学校 特別教室空調設備更新に伴う電気設備工事</p></div></div><div class="project-card"><img class="project-photo" src="assets/projects/project-13.jpg" alt="公共工事" loading="lazy"><div class="project-body"><span class="project-tag">公共工事</span><p class="project-text">岡山県立岡山瀬戸高等支援学校 空調設備整備に伴う電気設備工事</p></div></div></div>
+      <div class="projects-more"><a class="btn btn-outline" href="#works/1">この他の施工事例を見る（全14件）</a></div>
     </div>
   </section>
 
@@ -554,7 +539,6 @@
             <div style="flex:1;">
               <div class="label">Address</div>
               <div class="value small">〒702-8051<br>岡山市南区築港元町1-20</div>
-              <a class="map-link" id="mapLink" href="#" target="_blank" rel="noopener">地図で見る（Googleマップ）↗</a>
             </div>
           </div>
           <hr class="contact-hr">
@@ -618,9 +602,24 @@
   </section>
 </main>
 
+<main id="mainWorks" hidden>
+  <section id="works" class="works-section">
+    <div class="wrap">
+      <a class="back-link" href="#projects">← トップに戻る</a>
+      <div class="section-head">
+        <span class="section-eyebrow">Projects</span>
+        <h2>施工事例一覧</h2>
+        <p>これまで弊社で施工してきた工事内容の一覧です。</p>
+      </div>
+      <div id="worksGrid"></div>
+      <nav class="pagination" id="worksPagination" aria-label="ページ送り"></nav>
+    </div>
+  </section>
+</main>
+
 <footer class="site">
   <div class="wrap footer-inner">
-    <div style="display:flex; flex-direction:column; gap:18px; max-width:320px;">
+    <div class="footer-brand">
       <span class="footer-plate"><img src="assets/logo-header.png" alt="株式会社住研工業"></span>
       <div class="footer-info">
         <strong>株式会社住研工業</strong>
@@ -643,7 +642,7 @@
   </div>
 </footer>
 
-<script id="site-data" type="application/json">{"company":{"name":"株式会社住研工業","representative":"代表取締役　白川 雄盛","postal":"702-8051","address":"岡山市南区築港元町1-20","phone":"090-8985-7700","email":"ske.whiteriver@gmail.com","instagram":"https://www.instagram.com/jukenkogyo/","business":"電気設備工事一式"},"services":[{"icon":"bolt","title":"一般電気設備工事","desc":"住宅・店舗・オフィスなどの新築・改築・改修に伴う電気設備工事に対応します。"},{"icon":"panel","title":"受変電設備工事","desc":"キュービクルなど受変電設備の新設・更新工事、点検にも対応いたします。"},{"icon":"cable","title":"弱電工事","desc":"屋内配線から屋外配線まで、用途や現場条件に応じた配線工事を行います。"},{"icon":"sun","title":"太陽光発電設備工事","desc":"太陽光発電システムの設置工事に対応。導入のご相談もお気軽にどうぞ。"},{"icon":"bulb","title":"照明設備工事","desc":"LED化や照明器具の新設・交換など、省エネにつながる照明工事を行います。"},{"icon":"check","title":"保守点検・メンテナンス","desc":"設置後の定期点検や不具合対応など、長く安心してお使いいただくための保守を行います。"}],"projects":[{"tag":"公共工事","text":"犬養木堂記念館等 照明LED化工事","image":"assets/projects/project-08.jpg"},{"tag":"公共工事","text":"岡山市立芥子山小学校 体育館照明器具ほか改修工事","image":"assets/projects/project-14.jpg"},{"tag":"公共工事","text":"岡山市立富山公民館 照明設備ほか改修工事","image":"assets/projects/project-12.jpg"},{"tag":"公共工事","text":"角山小学校 特別教室空調設備更新に伴う電気設備工事","image":"assets/projects/project-09.jpg"},{"tag":"公共工事","text":"上道中学校 特別教室空調設備更新に伴う電気設備工事","image":"assets/projects/project-06.jpg"},{"tag":"公共工事","text":"岡山県立岡山瀬戸高等支援学校 空調設備整備に伴う電気設備工事","image":"assets/projects/project-13.jpg"},{"tag":"公共工事","text":"岡山市立古都小学校内 児童クラブ室増築に伴う電気設備工事","image":"assets/projects/project-11.jpg"},{"tag":"公共工事","text":"岡山市立旭東小学校内 児童クラブ室改築に伴う電気設備工事","image":"assets/projects/project-01.jpg"},{"tag":"公共工事","text":"岡山市立建部中学校 配膳室棟新築に伴う電気設備工事","image":"assets/projects/project-02.jpg"},{"tag":"公共工事","text":"岡山市立津島小学校 給水設備ほか改修に伴う電気設備工事","image":"assets/projects/project-07.jpg"},{"tag":"公共工事","text":"岡山大学（津島）農学部Ⅱ号館 エレベータ棟新営電気設備工事","image":"assets/projects/project-10.jpg"},{"tag":"公共工事","text":"岡山市福祉交流プラザ 山南エレベーター棟増築に伴う電気設備工事","image":"assets/projects/project-03.jpg"},{"tag":"公共工事","text":"岡山市立城東台小学校 太陽光発電設備改修工事","image":"assets/projects/project-05.jpg"},{"tag":"公共工事","text":"中央卸売市場 場内トイレ改修に伴う電気設備工事","image":"assets/projects/project-04.jpg"}],"careers":{"roles":["電気工事士（経験者歓迎）","未経験者"],"workplace":"岡山市南区築港元町1-20 ほか近隣現場","treatment":"経験・能力に応じて優遇（詳細はお問い合わせ時にご相談ください）","howToApply":"お電話またはお問い合わせフォームよりご連絡ください"}}</script>
+<script id="site-data" type="application/json">{"company":{"name":"株式会社住研工業","representative":"代表取締役　白川 雄盛","postal":"702-8051","address":"岡山市南区築港元町1-20","phone":"090-8985-7700","email":"ske.whiteriver@gmail.com","instagram":"https://www.instagram.com/jukenkogyo/","business":"電気設備工事一式"},"services":[{"icon":"bolt","title":"一般電気設備工事","desc":"住宅・店舗・オフィスなどの新築・改築・改修に伴う電気設備工事に対応します。"},{"icon":"panel","title":"受変電設備工事","desc":"キュービクルなど受変電設備の新設・更新工事、点検にも対応いたします。"},{"icon":"bulb","title":"照明設備工事","desc":"LED化や照明器具の新設・交換など、省エネにつながる照明工事を行います。"},{"icon":"cable","title":"弱電工事","desc":"屋内配線から屋外配線まで、用途や現場条件に応じた配線工事を行います。"},{"icon":"sun","title":"太陽光発電設備工事","desc":"太陽光発電システムの設置工事に対応。導入のご相談もお気軽にどうぞ。"},{"icon":"check","title":"保守点検・メンテナンス","desc":"設置後の定期点検や不具合対応など、長く安心してお使いいただくための保守を行います。"}],"projects":[{"tag":"公共工事","text":"犬養木堂記念館等 照明LED化工事","image":"assets/projects/project-08.jpg"},{"tag":"公共工事","text":"岡山市立芥子山小学校 体育館照明器具ほか改修工事","image":"assets/projects/project-14.jpg"},{"tag":"公共工事","text":"岡山市立富山公民館 照明設備ほか改修工事","image":"assets/projects/project-12.jpg"},{"tag":"公共工事","text":"角山小学校 特別教室空調設備更新に伴う電気設備工事","image":"assets/projects/project-09.jpg"},{"tag":"公共工事","text":"上道中学校 特別教室空調設備更新に伴う電気設備工事","image":"assets/projects/project-06.jpg"},{"tag":"公共工事","text":"岡山県立岡山瀬戸高等支援学校 空調設備整備に伴う電気設備工事","image":"assets/projects/project-13.jpg"},{"tag":"公共工事","text":"岡山市立古都小学校内 児童クラブ室増築に伴う電気設備工事","image":"assets/projects/project-11.jpg"},{"tag":"公共工事","text":"岡山市立旭東小学校内 児童クラブ室改築に伴う電気設備工事","image":"assets/projects/project-01.jpg"},{"tag":"公共工事","text":"岡山市立建部中学校 配膳室棟新築に伴う電気設備工事","image":"assets/projects/project-02.jpg"},{"tag":"公共工事","text":"岡山市立津島小学校 給水設備ほか改修に伴う電気設備工事","image":"assets/projects/project-07.jpg"},{"tag":"公共工事","text":"岡山大学（津島）農学部Ⅱ号館 エレベータ棟新営電気設備工事","image":"assets/projects/project-10.jpg"},{"tag":"公共工事","text":"岡山市福祉交流プラザ 山南エレベーター棟増築に伴う電気設備工事","image":"assets/projects/project-03.jpg"},{"tag":"公共工事","text":"岡山市立城東台小学校 太陽光発電設備改修工事","image":"assets/projects/project-05.jpg"},{"tag":"公共工事","text":"中央卸売市場 場内トイレ改修に伴う電気設備工事","image":"assets/projects/project-04.jpg"}],"careers":{"roles":["電気工事士（経験者歓迎）","未経験者"],"workplace":"岡山市南区築港元町1-20 ほか近隣現場","treatment":"経験・能力に応じて優遇（詳細はお問い合わせ時にご相談ください）","howToApply":"お電話またはお問い合わせフォームよりご連絡ください"}}</script>
 <script>/* 株式会社住研工業 サイトロジック（テンプレート生成 + 管理者編集パネル）
  * このファイルの内容はページ末尾の <script> にそのまま埋め込まれる。
  * 管理者が保存すると、この関数群を使って全文書を再生成し
@@ -746,13 +745,10 @@ function renderCareerTags(roles) {
 }
 
 function renderCompanyRows(c) {
-  var mapQuery = c.name + " 〒" + c.postal + " " + c.address;
-  var mapUrl = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(mapQuery);
   return (
     "<tr><th>会社名</th><td>" + esc(c.name) + "</td></tr>" +
     "<tr><th>代表者</th><td>" + esc(c.representative) + "</td></tr>" +
-    '<tr><th>所在地</th><td class="mono">〒' + esc(c.postal) + "<br>" + esc(c.address) + "<br>" +
-      '<a class="map-link-light" href="' + esc(mapUrl) + '" target="_blank" rel="noopener">地図で見る（Googleマップ）↗</a>' +
+    '<tr><th>所在地</th><td class="mono">〒' + esc(c.postal) + "<br>" + esc(c.address) +
     "</td></tr>" +
     '<tr><th>電話番号</th><td class="mono"><a href="tel:' + esc(telDigits(c.phone)) + '">' + esc(c.phone) + "</a></td></tr>" +
     "<tr><th>事業内容</th><td>" + esc(c.business) + "</td></tr>"
@@ -814,40 +810,6 @@ var HEAD_EXTRA = "<title>住研工業</title>\n" +
 "    --line-strong:#cfc6b3;\n" +
 "    --focus:#005859;\n" +
 "    color-scheme: light;\n" +
-"  }\n" +
-'  @media (prefers-color-scheme: dark){\n' +
-'    :root:not([data-theme="light"]){\n' +
-"      --teal-700:#3ea89f;\n" +
-"      --teal-800:#2a7d76;\n" +
-"      --teal-100:#123330;\n" +
-"      --teal-050:#0f2624;\n" +
-"      --navy-700:#6f8fe0;\n" +
-"      --navy-900:#0a1830;\n" +
-"      --ink:#eef0ee;\n" +
-"      --ink-soft:#aeb6b0;\n" +
-"      --paper:#0b100e;\n" +
-"      --paper-tint:#121a17;\n" +
-"      --line:#233330;\n" +
-"      --line-strong:#2d423d;\n" +
-"      --focus:#4fbdb3;\n" +
-"      color-scheme: dark;\n" +
-"    }\n" +
-"  }\n" +
-'  :root[data-theme="dark"]{\n' +
-"    --teal-700:#3ea89f;\n" +
-"    --teal-800:#2a7d76;\n" +
-"    --teal-100:#123330;\n" +
-"    --teal-050:#0f2624;\n" +
-"    --navy-700:#6f8fe0;\n" +
-"    --navy-900:#0a1830;\n" +
-"    --ink:#eef0ee;\n" +
-"    --ink-soft:#aeb6b0;\n" +
-"    --paper:#0b100e;\n" +
-"    --paper-tint:#121a17;\n" +
-"    --line:#233330;\n" +
-"    --line-strong:#2d423d;\n" +
-"    --focus:#4fbdb3;\n" +
-"    color-scheme: dark;\n" +
 "  }\n" +
 "\n" +
 "  *{box-sizing:border-box;}\n" +
@@ -1065,6 +1027,26 @@ var HEAD_EXTRA = "<title>住研工業</title>\n" +
 "  }\n" +
 "  .project-text{margin-top:10px; font-size:.92rem; line-height:1.65; color:var(--ink-soft);}\n" +
 "\n" +
+"  .projects-more{text-align:center; margin-top:32px;}\n" +
+"\n" +
+"  .works-section{padding-block:64px;}\n" +
+"  .back-link{\n" +
+"    display:inline-flex; align-items:center; gap:6px; color:var(--teal-700); text-decoration:none;\n" +
+"    font-size:.9rem; font-weight:600; margin-bottom:20px;\n" +
+"  }\n" +
+"  .back-link:hover{text-decoration:underline;}\n" +
+"  .pagination{display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:8px; margin-top:40px;}\n" +
+"  .pagination a, .pagination span{\n" +
+"    display:inline-flex; align-items:center; justify-content:center; min-width:38px; height:38px;\n" +
+"    border-radius:8px; border:1px solid var(--line-strong); text-decoration:none; color:var(--ink);\n" +
+"    font-size:.9rem; font-weight:600; padding:0 6px;\n" +
+"  }\n" +
+"  .pagination a:hover{border-color:var(--teal-700); color:var(--teal-700);}\n" +
+"  .pagination a.current, .pagination span.current{\n" +
+"    background:var(--teal-700); border-color:var(--teal-700); color:#fff;\n" +
+"  }\n" +
+"  .pagination span.ellipsis{border-color:transparent; color:var(--ink-soft);}\n" +
+"\n" +
 "  .about-layout{display:grid; grid-template-columns:1.1fr 1fr; gap:48px; align-items:start;}\n" +
 "  @media (max-width:860px){ .about-layout{grid-template-columns:1fr;} }\n" +
 "  .info-table{width:100%; border-collapse:collapse;}\n" +
@@ -1136,10 +1118,6 @@ var HEAD_EXTRA = "<title>住研工業</title>\n" +
 "    display:inline-flex; align-items:center; gap:8px; margin-top:6px; color:#cfe7e4;\n" +
 "    text-decoration:underline; font-size:.9rem;\n" +
 "  }\n" +
-"  .map-link-light{\n" +
-"    display:inline-flex; align-items:center; gap:6px; margin-top:8px; color:var(--teal-700);\n" +
-"    text-decoration:underline; font-size:.86rem; font-weight:600;\n" +
-"  }\n" +
 "  .contact-hr{height:1px; background:rgba(255,255,255,.14); border:none;}\n" +
 "\n" +
 "  .form-card{\n" +
@@ -1170,21 +1148,23 @@ var HEAD_EXTRA = "<title>住研工業</title>\n" +
 "  }\n" +
 "\n" +
 "  footer.site{\n" +
-"    background:linear-gradient(155deg,var(--navy-900),var(--teal-800));\n" +
+"    background:linear-gradient(155deg,#0d7377,#146fb0);\n" +
 "    color:#eef4f3; padding-block:56px calc(28px + env(safe-area-inset-bottom,0px));\n" +
 "  }\n" +
-"  .footer-inner{display:flex; flex-wrap:wrap; gap:80px; justify-content:flex-start; align-items:flex-start;}\n" +
-"  .footer-plate{background:#fff; border-radius:12px; padding:14px 18px; display:inline-flex;}\n" +
+"  .footer-inner{display:flex; flex-wrap:wrap; gap:64px; justify-content:center; align-items:center;}\n" +
+"  .footer-brand{display:flex; flex-direction:row; align-items:center; gap:48px;}\n" +
+"  .footer-plate{background:#fff; border-radius:12px; padding:14px 18px; display:inline-flex; flex-shrink:0;}\n" +
 "  .footer-plate img{height:34px; width:auto;}\n" +
-"  .footer-info{display:flex; flex-direction:column; gap:6px; font-size:.92rem; color:#d7e6e3;}\n" +
+"  .footer-info{display:flex; flex-direction:column; gap:6px; font-size:.92rem; color:#eef6f4; white-space:nowrap;}\n" +
 "  .footer-info strong{color:#fff; font-size:1rem;}\n" +
-"  .footer-links{display:grid; grid-template-columns:repeat(2,auto); column-gap:44px; row-gap:12px; align-content:start; margin-top:14px;}\n" +
-"  .footer-links a{text-decoration:none; color:#d7e6e3; font-size:.92rem;}\n" +
+"  @media (max-width:560px){ .footer-brand{flex-direction:column; align-items:flex-start;} .footer-info{white-space:normal;} }\n" +
+"  .footer-links{display:grid; grid-template-columns:repeat(2,auto); column-gap:48px; row-gap:12px; align-content:center;}\n" +
+"  .footer-links a{text-decoration:none; color:#eef6f4; font-size:.92rem;}\n" +
 "  .footer-links a:hover{color:#fff;}\n" +
-"  @media (max-width:480px){ .footer-links{grid-template-columns:1fr;} }\n" +
+"  @media (max-width:480px){ .footer-links{grid-template-columns:1fr; justify-items:center; text-align:center;} }\n" +
 "  .footer-bottom{\n" +
-"    margin-top:40px; padding-top:20px; border-top:1px solid rgba(255,255,255,.15);\n" +
-"    font-size:.8rem; color:#a9c4c0; display:flex; flex-wrap:wrap; gap:10px; justify-content:center;\n" +
+"    margin-top:40px; padding-top:20px; border-top:1px solid rgba(255,255,255,.22);\n" +
+"    font-size:.8rem; color:#e6f2f0; display:flex; flex-wrap:wrap; gap:10px; justify-content:center;\n" +
 "  }\n" +
 "</style>";
 
@@ -1278,8 +1258,8 @@ function buildBody(data, appSrc) {
 '    <div class="wrap">\n' +
 '      <div class="section-head">\n' +
 '        <span class="section-eyebrow">Services</span>\n' +
-'        <h2>事業内容・サービス紹介</h2>\n' +
-'        <p>公共施設から学校・住宅・店舗まで、電気設備に関わる工事を幅広く承っています。以下は代表的な工事内容です。</p>\n' +
+'        <h2>事業内容</h2>\n' +
+'        <p>公共施設から学校・住宅・店舗まで、電気設備に関わる工事を幅広く承っています。<br>以下は代表的な工事内容です。</p>\n' +
 '      </div>\n' +
 '      <div class="service-grid">' + renderServices(data.services) + '</div>\n' +
 '      <p class="note-inline">上記は電気設備工事として一般的な業務例です。お困りごとがあれば一度ご相談ください。</p>\n' +
@@ -1291,9 +1271,12 @@ function buildBody(data, appSrc) {
 '      <div class="section-head">\n' +
 '        <span class="section-eyebrow">Projects</span>\n' +
 '        <h2>施工事例</h2>\n' +
-'        <p>建物の種類や規模に応じて、これまで対応してきた工事内容の一例です。</p>\n' +
+'        <p>これまで弊社で施工してきた工事内容の一例です。</p>\n' +
 '      </div>\n' +
-      renderProjects(data.projects) + '\n' +
+      renderProjects(data.projects.slice(0, 6)) + '\n' +
+(data.projects.length > 6
+  ? '      <div class="projects-more"><a class="btn btn-outline" href="#works/1">この他の施工事例を見る（全' + data.projects.length + '件）</a></div>\n'
+  : '') +
 '    </div>\n' +
 '  </section>\n' +
 '\n' +
@@ -1354,7 +1337,6 @@ function buildBody(data, appSrc) {
 '            <div style="flex:1;">\n' +
 '              <div class="label">Address</div>\n' +
 '              <div class="value small">〒' + esc(c.postal) + '<br>' + esc(c.address) + '</div>\n' +
-'              <a class="map-link" id="mapLink" href="#" target="_blank" rel="noopener">地図で見る（Googleマップ）↗</a>\n' +
 '            </div>\n' +
 '          </div>\n' +
 '          <hr class="contact-hr">\n' +
@@ -1418,9 +1400,24 @@ function buildBody(data, appSrc) {
 '  </section>\n' +
 '</main>\n' +
 '\n' +
+'<main id="mainWorks" hidden>\n' +
+'  <section id="works" class="works-section">\n' +
+'    <div class="wrap">\n' +
+'      <a class="back-link" href="#projects">← トップに戻る</a>\n' +
+'      <div class="section-head">\n' +
+'        <span class="section-eyebrow">Projects</span>\n' +
+'        <h2>施工事例一覧</h2>\n' +
+'        <p>これまで弊社で施工してきた工事内容の一覧です。</p>\n' +
+'      </div>\n' +
+'      <div id="worksGrid"></div>\n' +
+'      <nav class="pagination" id="worksPagination" aria-label="ページ送り"></nav>\n' +
+'    </div>\n' +
+'  </section>\n' +
+'</main>\n' +
+'\n' +
 '<footer class="site">\n' +
 '  <div class="wrap footer-inner">\n' +
-'    <div style="display:flex; flex-direction:column; gap:18px; max-width:320px;">\n' +
+'    <div class="footer-brand">\n' +
 '      <span class="footer-plate"><img src="assets/logo-header.png" alt="' + esc(c.name) + '"></span>\n' +
 '      <div class="footer-info">\n' +
 '        <strong>' + esc(c.name) + '</strong>\n' +
@@ -1480,6 +1477,63 @@ if (typeof document !== "undefined") {
     var y = document.getElementById("year");
     if (y) y.textContent = new Date().getFullYear();
 
+    /* ---- works page: full project list with pagination (#works/N) ---- */
+    (function () {
+      var PAGE_SIZE = 9;
+      var mainHome = document.getElementById("main");
+      var mainWorks = document.getElementById("mainWorks");
+      var worksGrid = document.getElementById("worksGrid");
+      var worksPagination = document.getElementById("worksPagination");
+      var ALL_PROJECTS = SITE_DATA ? (SITE_DATA.projects || []) : [];
+      if (!mainWorks || !worksGrid) return;
+
+      function totalPages() {
+        return Math.max(1, Math.ceil(ALL_PROJECTS.length / PAGE_SIZE));
+      }
+
+      function renderPagination(page, total) {
+        if (!worksPagination) return;
+        if (total <= 1) { worksPagination.innerHTML = ""; return; }
+        var html = "";
+        if (page > 1) html += '<a href="#works/' + (page - 1) + '">前へ</a>';
+        for (var i = 1; i <= total; i++) {
+          html += '<a href="#works/' + i + '"' + (i === page ? ' class="current" aria-current="page"' : "") + ">" + i + "</a>";
+        }
+        if (page < total) html += '<a href="#works/' + (page + 1) + '">次へ</a>';
+        worksPagination.innerHTML = html;
+      }
+
+      function renderWorksPage(requestedPage) {
+        var total = totalPages();
+        var page = Math.min(Math.max(requestedPage || 1, 1), total);
+        var start = (page - 1) * PAGE_SIZE;
+        worksGrid.innerHTML = renderProjects(ALL_PROJECTS.slice(start, start + PAGE_SIZE));
+        renderPagination(page, total);
+      }
+
+      function applyRoute() {
+        var hash = window.location.hash || "";
+        var m = hash.match(/^#works(?:\/(\d+))?/);
+        if (m) {
+          if (mainHome) mainHome.hidden = true;
+          mainWorks.hidden = false;
+          renderWorksPage(parseInt(m[1], 10) || 1);
+          window.scrollTo({ top: 0 });
+        } else {
+          if (mainHome) mainHome.hidden = false;
+          mainWorks.hidden = true;
+          if (hash.length > 1) {
+            var target = null;
+            try { target = document.querySelector(hash); } catch (err) { target = null; }
+            if (target) target.scrollIntoView();
+          }
+        }
+      }
+
+      window.addEventListener("hashchange", applyRoute);
+      applyRoute();
+    })();
+
     /* ---- mobile nav: close on link click ---- */
     var navToggle = document.getElementById("navToggle");
     var navLinks = document.getElementById("navLinks");
@@ -1487,13 +1541,6 @@ if (typeof document !== "undefined") {
       navLinks.querySelectorAll("a").forEach(function (a) {
         a.addEventListener("click", function () { navToggle.checked = false; });
       });
-    }
-
-    /* ---- google maps link ---- */
-    var mapLink = document.getElementById("mapLink");
-    if (mapLink && SITE_DATA) {
-      var q = SITE_DATA.company.name + " 〒" + SITE_DATA.company.postal + " " + SITE_DATA.company.address;
-      mapLink.href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q);
     }
 
     /* ---- copy buttons ---- */
