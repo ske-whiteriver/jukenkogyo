@@ -246,6 +246,7 @@
     background:var(--paper); border:1px solid var(--line); border-radius:16px; overflow:hidden;
     display:flex; flex-direction:column; transition:border-color .15s ease, transform .15s ease;
   }
+  .project-card[hidden]{display:none;}
   .project-card:hover{border-color:var(--line-strong); transform:translateY(-2px);}
   .project-photo{width:100%; aspect-ratio:4/3; object-fit:cover; display:block; background:var(--paper-tint);}
   .project-photo-empty{background:linear-gradient(135deg, var(--paper-tint), var(--line));}
@@ -1115,6 +1116,7 @@ SCRIPT_OPEN + ' type="application/ld+json">' + JSON.stringify(SEO_JSONLD) + SCRI
 "    background:var(--paper); border:1px solid var(--line); border-radius:16px; overflow:hidden;\n" +
 "    display:flex; flex-direction:column; transition:border-color .15s ease, transform .15s ease;\n" +
 "  }\n" +
+"  .project-card[hidden]{display:none;}\n" +
 "  .project-card:hover{border-color:var(--line-strong); transform:translateY(-2px);}\n" +
 "  .project-photo{width:100%; aspect-ratio:4/3; object-fit:cover; display:block; background:var(--paper-tint);}\n" +
 "  .project-photo-empty{background:linear-gradient(135deg, var(--paper-tint), var(--line));}\n" +
